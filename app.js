@@ -17,8 +17,6 @@ var credentials = {
                   };
 
 
-
-
 var app = express();
 app.get('/', (req, res) => { 
     res.statusCode(200);
@@ -28,14 +26,8 @@ app.get('/', (req, res) => {
 
 
 
-
-
-
-
-
 /*---------------------------------------------------------------------*/
 https
     .createServer(credentials, app)
-    .listen(PORT, () => {
-        console.log(`HTTPS-Server up and running: https://${process.env.HOST} at port: ${process.env.PORT}`);
-});
+    .listen(PORT, () => { console.log(`HTTPS-Server up and running: https://${process.env.HOST} at port: ${process.env.PORT}`); })
+    .on((err) => { res.end( 'Fehler: ' + err ); });
