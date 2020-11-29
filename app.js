@@ -1,6 +1,5 @@
 require('dotenv').config();
 var fs = require('fs');
-//var http  = require('http');
 var https = require('https');
 var express = require('express');
 /*---------------------------------------------------------------------*/
@@ -25,14 +24,14 @@ app.get('/', (req, res) => { res.send(200, 'Jetzt ist der Server auf HTTPS umges
 
 
 
-var httpsServer = https.createServer(credentials, app);
-//var httpServer  = http.createServer(app);
+
 
 
 
 
 /*---------------------------------------------------------------------*/
-// Server starten
-httpsServer.listen(8443, () => {
-    console.log('HTTPS-Server up and running! :-)');
+https
+    .createServer(credentials, app)
+    .listen(8443, () => {
+        console.log('HTTPS-Server up and running! :-)');
 });
