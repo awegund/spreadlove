@@ -33,6 +33,6 @@ var httpsServer = https.createServer(credentials, app);
 
 /*---------------------------------------------------------------------*/
 // Server starten
-httpsServer.listen(PORT, () => {
+httpsServer.listen(8443, () => {
     console.log('HTTPS-Server up and running! :-)');
 });
