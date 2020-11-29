@@ -32,6 +32,6 @@ app.get('/', (req, res) => { res.send(200, 'Jetzt ist der Server auf HTTPS umges
 /*---------------------------------------------------------------------*/
 https
     .createServer(credentials, app)
-    .listen(8443, () => {
+    .listen(PORT, () => {
         console.log('HTTPS-Server up and running! :-)');
 });
