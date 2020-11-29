@@ -1,0 +1,152 @@
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: lightblue;
+  /*---------------------------------------------------------------------------------------*
+     *                                 H E A D E R                                           *
+     *---------------------------------------------------------------------------------------*/
+  /*---------------------------------------------------------------------------------------*
+     *                                 M A I N                                               *
+     *---------------------------------------------------------------------------------------*/
+  /*---------------------------------------------------------------------------------------*
+     *                                 F O O T E R                                           *
+     *---------------------------------------------------------------------------------------*/
+}
+
+body .header {
+  background-color: rgba(0, 0, 255, 0.8);
+  position: fixed;
+  width: 100%;
+  height: 3.5rem;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+}
+
+body .header .navbar {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body .header .navbar ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: wrap;
+          flex-direction: wrap;
+}
+
+body .header .navbar ul li:nth-child(1) {
+  background-color: blue;
+}
+
+body .header .navbar ul li:nth-child(2) {
+  background-color: yellow;
+}
+
+body .header .navbar ul li:nth-child(3) {
+  background-color: lightgreen;
+}
+
+body section {
+  border-color: 10px solid green;
+  height: 2000px;
+  width: 100%;
+}
+
+body section .container {
+  background-color: rgba(0, 0, 255, 0.5);
+  border-color: 10px solid darkblue;
+  margin-top: 20rem;
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  grid-area: "sidebar-left main sidebar-right";
+  grid-auto-flow: row;
+  gap: 1rem;
+}
+
+body section .container .sidebar-left {
+  grid-area: sidebar-left;
+}
+
+body section .container .main {
+  grid-area: main;
+}
+
+body section .container .sidebar-right {
+  grid-area: sidebar-right;
+}
+
+body footer {
+  background-color: rgba(0, 128, 0, 0.3);
+  position: fixed;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  left: 0;
+}
+
+body footer .footer-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+body footer .footer-container ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "left middle right";
+  height: 100%;
+}
+
+body footer .footer-container ul li {
+  height: 100%;
+  width: 100%;
+}
+
+body footer .footer-container ul li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+}
+
+body footer .footer-container ul li:nth-child(1) {
+  grid-area: "left";
+  background-color: yellow;
+}
+
+body footer .footer-container ul li:nth-child(2) {
+  grid-area: "middle";
+  background-color: lightcoral;
+}
+
+body footer .footer-container ul li:nth-child(3) {
+  grid-area: "right";
+  background-color: gold;
+}
+/*# sourceMappingURL=index.css.map */

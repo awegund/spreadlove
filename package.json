@@ -1,0 +1,22 @@
+{
+  "name": "sawac",
+  "version": "1.0.0",
+  "description": "Homepage of Andreas S. W.",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awegund/sawac.git"
+  },
+  "keywords": [
+    "sawac"
+  ],
+  "author": "Andreas S. W.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/awegund/sawac/issues"
+  },
+  "homepage": "https://github.com/awegund/sawac#readme"
+}
