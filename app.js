@@ -1,6 +1,12 @@
+require('dotenv').config();
 var fs = require('fs');
+var http  = require('http');
 var https = require('https');
 var express = require('express');
+/*---------------------------------------------------------------------*/
+
+var PORT = process.env.PORT;
+
 /*---------------------------------------------------------------------*/
 
 
@@ -19,13 +25,14 @@ app.get('/', (req, res) => { res.send(200, 'Now using HTTPS!!') });
 
 
 
-var httpsServer = https.createServer(credentials, app);
+//var httpsServer = https.createServer(credentials, app);
+var httpServer  = http.createServer(app);
 
 
 
 
 /*---------------------------------------------------------------------*/
 // Server starten
-httpsServer.listen(8443, () => {
+httpServer.listen(8443, () => {
     console.log('HTTPS-Server up and running!');
 });
