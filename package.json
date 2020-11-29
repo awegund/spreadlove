@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/awegund/sawac/issues"
   },
-  "homepage": "https://github.com/awegund/sawac#readme"
+  "homepage": "https://github.com/awegund/sawac#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
