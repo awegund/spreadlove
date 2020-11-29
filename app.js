@@ -20,7 +20,11 @@ var credentials = {
 
 
 var app = express();
-app.get('/', (req, res) => { res.send(200, 'Jetzt ist der Server auf HTTPS umgestellt!!') });
+app.get('/', (req, res) => { 
+    res.statusCode(200);
+    res.setHeader('Content-Type', 'text/html');
+    res.end(`{ "mesage": "Nun funktioniert es endlich!" }`); 
+});
 
 
 
@@ -33,5 +37,5 @@ app.get('/', (req, res) => { res.send(200, 'Jetzt ist der Server auf HTTPS umges
 https
     .createServer(credentials, app)
     .listen(PORT, () => {
-        console.log('HTTPS-Server up and running! :-)');
+        console.log(`HTTPS-Server up and running: https://${process.env.HOST} at port: ${process.env.PORT}`);
 });
