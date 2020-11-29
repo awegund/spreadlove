@@ -21,7 +21,7 @@ var credentials = {
 
 
 var app = express();
-app.get('/', (req, res) => { res.send(200, 'Now using HTTPS!!') });
+app.get('/', (req, res) => { res.send(200, 'Jetzt ist der Server auf HTTPS umgestellt!!') });
 
 
 
