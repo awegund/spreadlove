@@ -5,10 +5,6 @@ var https = require('https');
 var express = require('express');
 /*---------------------------------------------------------------------*/
 
-var PORT = process.env.PORT;
-
-/*---------------------------------------------------------------------*/
-
 
 var privateKey  = fs.readFileSync(__dirname + '/SSL/sawac.key', 'utf8');
 var certificate = fs.readFileSync(__dirname + '/SSL/sawac.crt', 'utf8');
@@ -20,7 +16,7 @@ var credentials = {
 
 var app = express();  
 app.get('/', (req, res) => { 
-    res.statusCode(200);
+    res.status(200);
     res.setHeader('Content-Type', 'text/html');
     res.end(`{ "mesage": "<H1>Nun funktioniert es endlich!</H1>" }`); 
 });
@@ -31,5 +27,5 @@ app.get('/', (req, res) => {
 //https
 http.createServer(app)
 //.createServer(credentials, app)
-    .listen(PORT, () => { console.log(`HTTPS-Server up and running: https://${process.env.HOST} at port: ${process.env.PORT}`); })
+    .listen(process.env.PORT, () => { console.log(`HTTPS-Server up and running: https://${process.env.HOST} at port: ${process.env.PORT}`); })
     .on('uncauthException', (err) => { res.end( 'Scheißßeeee Fehler!!!!!!!!!!!!!!!!!! ' + err ); });

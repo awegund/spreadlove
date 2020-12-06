@@ -1,7 +1,7 @@
 {
-  "name": "sawac",
+  "name": "spreadlove",
   "version": "1.0.0",
-  "description": "Homepage of Andreas S. W.",
+  "description": "We spread love...",
   "main": "app.js",
   "scripts": {
     "test": "npm start",
@@ -9,19 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awegund/sawac.git"
+    "url": "git+https://github.com/awegund/spreadlove.git"
   },
   "keywords": [
-    "sawac"
+    "spreadlove"
   ],
-  "author": "Andreas S. W.",
+  "author": "A. S. W.",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/awegund/sawac/issues"
+    "url": "https://github.com/awegund/spreadlove/issues"
   },
-  "homepage": "https://github.com/awegund/sawac#readme",
+  "homepage": "https://github.com/awegund/spreadlove#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
   }
 }
