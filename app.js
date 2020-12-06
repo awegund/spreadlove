@@ -1,5 +1,6 @@
 require('dotenv').config();
 var fs = require('fs');
+var http  = require('http');
 var https = require('https');
 var express = require('express');
 /*---------------------------------------------------------------------*/
@@ -27,7 +28,8 @@ app.get('/', (req, res) => {
 
 
 /*---------------------------------------------------------------------*/
-https
-    .createServer(credentials, app)
+//https
+http
+.createServer(credentials, app)
     .listen(PORT, () => { console.log(`HTTPS-Server up and running: https://${process.env.HOST} at port: ${process.env.PORT}`); })
     .on('uncauthException', (err) => { res.end( 'Fehler: ' + err ); });
