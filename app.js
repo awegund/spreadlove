@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 /*---------------------------------------------------------------------*/
 //https
-http
-.createServer(credentials, app)
+http.createServer(app)
+//.createServer(credentials, app)
     .listen(PORT, () => { console.log(`HTTPS-Server up and running: https://${process.env.HOST} at port: ${process.env.PORT}`); })
     .on('uncauthException', (err) => { res.end( 'Fehler: ' + err ); });
