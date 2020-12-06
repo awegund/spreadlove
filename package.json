@@ -4,7 +4,8 @@
   "description": "Homepage of Andreas S. W.",
   "main": "app.js",
   "scripts": {
-    "test": "npm start"
+    "test": "npm start",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
