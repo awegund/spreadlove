@@ -8,6 +8,9 @@ let publicRoutes = require('./routes/index');
 
 
 var app = express();  
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 /*---------------------------------------------------------------------*
  *                         MIDDLEWARE                                  * 
@@ -30,14 +33,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 
-
-
-
  app.use(publicRoutes);
 
 //  404
 app.use((req, res, next) => {
-    res.status(404).send('<h1>Fehler, Seite nicht gefunden!</h1>');
+    res.status(404).render({failureTitle: 'Fehler, Seite nicht gefunden!'});
 });
 
 /*---------------------------------------------------------------------*
