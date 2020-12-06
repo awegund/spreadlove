@@ -18,7 +18,7 @@ var app = express();
 app.get('/', (req, res) => { 
     res.status(200);
     res.setHeader('Content-Type', 'text/html');
-    res.end("<H1 style='background-color:blue;color:white'>Nun funktioniert es endlich!</H1>"); 
+    res.end("<H1 style='background-color:blue;color:white'>Iscchhhh liiieeebbb DIIIRRRR!!!</H1>"); 
 });
 
 
