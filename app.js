@@ -22,7 +22,7 @@ var app = express();
 app.get('/', (req, res) => { 
     res.statusCode(200);
     res.setHeader('Content-Type', 'text/html');
-    res.end(`{ "mesage": "Nun funktioniert es endlich!" }`); 
+    res.end(`{ "mesage": "<H1>Nun funktioniert es endlich!</H1>" }`); 
 });
 
 
@@ -32,4 +32,4 @@ app.get('/', (req, res) => {
 http.createServer(app)
 //.createServer(credentials, app)
     .listen(PORT, () => { console.log(`HTTPS-Server up and running: https://${process.env.HOST} at port: ${process.env.PORT}`); })
-    .on('uncauthException', (err) => { res.end( 'Fehler: ' + err ); });
+    .on('uncauthException', (err) => { res.end( 'Scheißßeeee Fehler!!!!!!!!!!!!!!!!!! ' + err ); });
