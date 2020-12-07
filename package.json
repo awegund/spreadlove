@@ -21,10 +21,13 @@
   },
   "homepage": "https://github.com/awegund/spreadlove#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "nodemon": "^2.0.6"
+    "express-session": "^1.17.1",
+    "nodemon": "^2.0.6",
+    "serve-favicon": "^2.5.0"
   }
 }

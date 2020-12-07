@@ -1,43 +1,59 @@
 require('dotenv').config();
 var fs          = require('fs');
+let path        = require('path');
 var http        = require('http');
 var express     = require('express');
 var bodyParser  = require('body-parser');
-let publicRoutes = require('./routes/index');
+let favicon     = require('serve-favicon');
+let session     = require('express-session');
+/*---------------------------------------------------------------------*/
+let publicRoutes = require('./routes/indexRoutes');
+let errorController = require('./controller/errorController');
 /*---------------------------------------------------------------------*/
 
 
+// Template Engine
 var app = express();  
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-/*---------------------------------------------------------------------*
- *                         MIDDLEWARE                                  * 
- *---------------------------------------------------------------------*/
-
 //  add bodyparser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// FavIcon
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 
- app.use( (req, res, next) => {
-    console.log('in Middleware');
+/*---------------------------------------------------------------------*
+ *                    MIDDLEWARE BEFORE                                * 
+ *---------------------------------------------------------------------*/
+app.use( (req, res, next) => {
+    console.log('in Middleware right befor Session-Cookies');
     next();
 });
-
+app.use(session({
+    secret:            'ThisIsTheSpreadLoveSessionCookie',
+    resave:             false,
+    saveUninitialized:  false,
+    cookie: {
+        maxAge: 3600
+    }
+}));
 
 /*---------------------------------------------------------------------*
  *                         ROUTES                                      * 
  *---------------------------------------------------------------------*/
-
-
-
  app.use(publicRoutes);
 
-//  404
-app.use((req, res, next) => {
-    res.status(404).render('404', {failureTitle: 'Fehler, Seite nicht gefunden!'});
-});
+
+/*---------------------------------------------------------------------*
+ *                    MIDDLEWARE AFTER                                 * 
+ *---------------------------------------------------------------------*/
+//  404 - Site not found!
+app.use(errorController.get404Page);
+
 
 /*---------------------------------------------------------------------*
  *                         START SERVER                                * 
