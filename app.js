@@ -47,7 +47,7 @@ app.use( (req, res, next) => {
 });
 
 app.use(session({
-    secret:            'ThisIsTheSpreadLoveSessionCookie',
+    secret:            'ThisIsTheSpreadLoveSessionStore',
     store:              redis,
     resave:             false,
     saveUninitialized:  false,
