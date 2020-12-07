@@ -6,7 +6,6 @@ var bodyParser  = require('body-parser');
 let favicon     = require('serve-favicon');
 var express     = require('express');
 var session     = require('express-session');
-// var RedisStore  = require('redis').createClient(process.env.REDIS_URL);
 /*---------------------------------------------------------------------*/
 let publicRoutes = require('./routes/indexRoutes');
 let errorController = require('./controller/errorController');
@@ -30,11 +29,11 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 if (process.env.REDIS_URL) {
     // inside if statement
     var rtg   = require("url").parse(process.env.REDIS_URL);
-    var redis = require("redis").createClient(rtg.port, rtg.hostname);
-    redis.auth(rtg.auth.split(":")[1]);
+    var RedisStore = require("redis").createClient(rtg.port, rtg.hostname);
+    RedisStore.auth(rtg.auth.split(":")[1]);
     
 } else {
-    var redis = require("redis").createClient();
+    var RedisStore = require("redis").createClient();
 }
 
 
@@ -48,7 +47,7 @@ app.use( (req, res, next) => {
 
 app.use(session({
     secret:            'ThisIsTheSpreadLoveSessionStore',
-    store:              redis,
+    store:              RedisStore,
     resave:             false,
     saveUninitialized:  false,
     cookie: {
