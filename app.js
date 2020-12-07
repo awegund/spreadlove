@@ -8,7 +8,6 @@ let publicRoutes = require('./routes/index');
 
 
 var app = express();  
-app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -37,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //  404
 app.use((req, res, next) => {
-    res.status(404).render({failureTitle: 'Fehler, Seite nicht gefunden!'});
+    res.status(404).render('404', {failureTitle: 'Fehler, Seite nicht gefunden!'});
 });
 
 /*---------------------------------------------------------------------*
