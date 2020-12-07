@@ -6,6 +6,7 @@ var express     = require('express');
 var bodyParser  = require('body-parser');
 let favicon     = require('serve-favicon');
 let session     = require('express-session');
+let client      = require('redis').createClient(process.env.REDIS_URL);
 /*---------------------------------------------------------------------*/
 let publicRoutes = require('./routes/indexRoutes');
 let errorController = require('./controller/errorController');
