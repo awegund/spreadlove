@@ -5,8 +5,8 @@ var http        = require('http');
 var bodyParser  = require('body-parser');
 let favicon     = require('serve-favicon');
 var express     = require('express');
-let session     = require('express-session');
-let RedisStore  = require('redis').createClient(process.env.REDIS_URL);
+var session     = require('express-session');
+// var RedisStore  = require('redis').createClient(process.env.REDIS_URL);
 /*---------------------------------------------------------------------*/
 let publicRoutes = require('./routes/indexRoutes');
 let errorController = require('./controller/errorController');
@@ -26,6 +26,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 // FavIcon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+// Redis Session Store
+if (process.env.REDIS_URL) {
+    // inside if statement
+    var rtg   = require("url").parse(process.env.REDIS_URL);
+    var redis = require("redis").createClient(rtg.port, rtg.hostname);
+    redis.auth(rtg.auth.split(":")[1]);
+    
+} else {
+    var redis = require("redis").createClient();
+}
+
 
 /*---------------------------------------------------------------------*
  *                    MIDDLEWARE BEFORE                                * 
@@ -34,9 +45,10 @@ app.use( (req, res, next) => {
     console.log('in Middleware right befor Session-Cookies');
     next();
 });
+
 app.use(session({
     secret:            'ThisIsTheSpreadLoveSessionCookie',
-    store:              RedisStore,
+    store:              redis,
     resave:             false,
     saveUninitialized:  false,
     cookie: {
