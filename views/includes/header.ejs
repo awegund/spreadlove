@@ -11,13 +11,18 @@
     </head>
     <body>
         <!-- HEADER -->
-        <header class="header">
+        <header class="main-header">
+            <!-- Navigation Image -->
+            <div class="navbar-image">
+                <a href="/" alt="Home"><img src="/img/bg_sea.jpg"></a>
+            </div>
+            
+            <!-- Navigation Items -->
             <nav class="navbar">
-                <span class="fas fa-camera"></span>
-                <ul>
-                    <li><%= navLink1 %></li>
-                    <li>Link 2</li>
-                    <li>Link 3</li>
+                <ul class="navbar-items">
+                    <li class="navbar-item"><a href="/authentication/login"><%= navLink1 %></a></li>
+                    <li class="navbar-item"><a href="/">Seite 2</a></li>
+                    <li class="navbar-item"><a href="/">Seite 3</a></li>
                 </ul>
             </nav>    
         </header>
