@@ -1,10 +1,5 @@
 exports.getIndex = (req, res) => { 
-
-    console.log('Vor Session!');
-    req.session.AndreasIstDerBeste = true;
-    req.session.JaAberSicher = { antwort: 'selbstverständlich',
-                                 ja:       true };
-    console.log(req.session);
+    req.session.SpreadLoveKey = 'Lasst Liebe da!!';
 
     res.status(200);
     res.render('index', {

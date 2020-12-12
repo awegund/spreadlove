@@ -33,7 +33,11 @@ if (process.env.REDIS_URL) {
     RedisStore.auth(rtg.auth.split(":")[1]);
     
 } else {
-    var RedisStore = require("redis").createClient();
+    try{
+        var RedisStore = require("redis").createClient();
+    }catch(err){
+        console.error(err);
+    }
 }
 
 
@@ -41,7 +45,8 @@ if (process.env.REDIS_URL) {
  *                    MIDDLEWARE BEFORE                                * 
  *---------------------------------------------------------------------*/
 app.use( (req, res, next) => {
-    // console.log('in Middleware right befor Session-Cookies');
+    console.log('befor Session MW ----------------------------------');
+    console.info(req.session);
     next();
 });
 
@@ -52,8 +57,8 @@ app.use(session({
     saveUninitialized:  false,
     cookie: {
         maxAge: 3600
-    }
-}));
+    }}));
+
 
 /*---------------------------------------------------------------------*
  *                         ROUTES                                      * 
@@ -64,7 +69,14 @@ app.use(session({
 /*---------------------------------------------------------------------*
  *                    MIDDLEWARE AFTER                                 * 
  *---------------------------------------------------------------------*/
-//  404 - Site not found!
+app.use((req, res, next) => {
+    //nach den Routs MW
+    console.log('nach Routes MW ----------------------------------')
+    console.log(req.session);
+    next();
+})
+
+ //  404 - Site not found!
 app.use(errorController.get404Page);
 
 
@@ -73,5 +85,5 @@ app.use(errorController.get404Page);
  *---------------------------------------------------------------------*/
 http.createServer(app)
     .listen(process.env.PORT, () => { 
-        console.log(`HTTPS-Server up and running: https://${process.env.HOST} at port: ${process.env.PORT}`); 
+        console.log(`HTTPS-Server up and running: https://www.${process.env.HOST} at port: ${process.env.PORT}`); 
     });
