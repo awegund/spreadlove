@@ -41,7 +41,7 @@ if (process.env.REDIS_URL) {
  *                    MIDDLEWARE BEFORE                                * 
  *---------------------------------------------------------------------*/
 app.use( (req, res, next) => {
-    console.log('in Middleware right befor Session-Cookies');
+    // console.log('in Middleware right befor Session-Cookies');
     next();
 });
 
