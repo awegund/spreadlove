@@ -11,6 +11,9 @@ let publicRoutes = require('./routes/indexRoutes');
 let errorController = require('./controller/errorController');
 /*---------------------------------------------------------------------*/
 
+console.log('Start GAAAAAAAAAANNNNNNNNNNNNZZZZZZZZZZZZZ OBBEEEENNNNNN');
+
+
 
 // Template Engine
 var app = express();  
@@ -31,13 +34,8 @@ if (process.env.REDIS_URL) {
     var rtg   = require("url").parse(process.env.REDIS_URL);
     var RedisStore = require("redis").createClient(rtg.port, rtg.hostname);
     RedisStore.auth(rtg.auth.split(":")[1]);
-    
 } else {
-    try{
         var RedisStore = require("redis").createClient();
-    }catch(err){
-        console.error(err);
-    }
 }
 
 
