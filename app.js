@@ -12,9 +12,18 @@ let publicRoutes = require('./routes/indexRoutes');
 let errorController = require('./controller/errorController');
 /*---------------------------------------------------------------------*/
 
-console.log('Start GAAAAAAAAAANNNNNNNNNNNNZZZZZZZZZZZZZ OBBEEEENNNNNN');
+console.log('INITIALIZATION OF APP HAS STARTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 
 
+// Redis Session Store
+if (process.env.REDIS_URL) {
+    // inside if statement
+    var rtg   = require("url").parse(process.env.REDIS_URL);
+    let RedisStore = redis.createClient(rtg.port, rtg.hostname);
+    RedisStore.auth(rtg.auth.split(":")[1]);
+} else {
+    var RedisStore = redis.createClient();
+}
 
 // Template Engine
 var app = express();  
@@ -29,15 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // FavIcon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-// Redis Session Store
-if (process.env.REDIS_URL) {
-    // inside if statement
-    var rtg   = require("url").parse(process.env.REDIS_URL);
-    var RedisStore = redis.createClient(rtg.port, rtg.hostname);
-    RedisStore.auth(rtg.auth.split(":")[1]);
-} else {
-        var RedisStore = redis.createClient();
-}
+
+
 
 
 /*---------------------------------------------------------------------*
@@ -50,8 +52,8 @@ app.use( (req, res, next) => {
 });
 
 app.use(session({
+    name:              'SpreadLove.ONE',
     secret:            'Spr3adL0veS3ss10nSt0re',
-    name:              'SpreadLoveSession',
     resave:             false,
     saveUninitialized:  false,
     cookie: {
@@ -86,5 +88,5 @@ app.use(errorController.get404Page);
  *---------------------------------------------------------------------*/
 http.createServer(app)
     .listen(process.env.PORT, () => { 
-        console.log(`HTTPS-Server up and running: https://www.${process.env.HOST}:${process.env.PORT}`); 
+        console.log(`HTTP-Server up and running: https://www.${process.env.HOST}:${process.env.PORT}`); 
     });

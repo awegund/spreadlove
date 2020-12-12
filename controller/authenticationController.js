@@ -4,7 +4,7 @@ exports.getLoginPage = (req, res) => {
 
     res.status(200);
     res.render('authentication/login', {
-        navLink1: req.session[0]
+        navLink1: req.session.isLoggedIn
     }); 
 }
 
