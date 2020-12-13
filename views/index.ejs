@@ -5,7 +5,11 @@
 <!-- SECTION HEADER -->
 <section>
     <div class="container" style="font-size: 4rem; color: darkblue">
-        SpreadLove! <i class="fas fa-child" style='font-size:5rem; color:darkblue'></i>
+        <% if(name) { %>
+            SpreadLove: <%= name %>! <i class="fas fa-child" style='font-size:5rem; color:red'></i><i class="fas fa-heart" style='position: relative; font-size:2rem; top: -4rem; color:red; transform:rotate(30deg);'></i>
+        <% } else { %>
+            SpreadLove Every.ONE! <i class="fas fa-child" style='font-size:5rem; color:darkblue'></i>
+        <% } %>
     </div>
 </section>
 

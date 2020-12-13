@@ -3,20 +3,20 @@ const indexController = require('../controller/indexController');
 const authenticationController = require('../controller/authenticationController');
 /*---------------------------------------------------------------------*/
 
-const router = express.Router();
 
+const router = express.Router();
 
 /*---------------------------------------------------------------------*
  *                         ROUTES                                      * 
  *---------------------------------------------------------------------*/
 
 router
-    .get('/', indexController.getIndex)
-    .get('/authentication/login', authenticationController.getLoginPage);
+    .get('/',                       indexController.getIndex)
+    .get('/authentication/login',   authenticationController.getLoginPage);
 
 
 router
-    .post('/login', );
+    .post('/login',                 authenticationController.postLogin);
 
 /*---------------------------------------------------------------------*
  *                         EXPORT                                      * 

@@ -104,8 +104,7 @@ try {
         .authenticate()
         .then(result => {
             console.log('Connection has been established successfully.');
-            console.log(result);
-
+            
             // DB Sync
             sequelize.sync()
                     .then(result => {
@@ -119,12 +118,10 @@ try {
     
                 })
         
-                .catch(err => {
+        .catch(err => {
             console.log(err);
         });
 
-
 } catch (error) {
   console.error('Unable to connect to the database:', error);
-
 }
