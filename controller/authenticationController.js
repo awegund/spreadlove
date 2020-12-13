@@ -4,12 +4,10 @@ const User    = require('../models/userModel');
 
 exports.getLoginPage = (req, res) => { 
     console.log('Login Session Status ----------------------------------------------');
-    console.log(req.session.isLoggedIn);
-    console.log(req.session.userEmail);
-    console.log(req.session.password);
+    console.log(req.session);
     res.status(200);
     res.render('authentication/login', {
-        navLink1: req.session.name,
+        navLink1: 'Home',
         name: req.session.name,
         email: req.session.email,
         password: req.session.password
@@ -18,11 +16,6 @@ exports.getLoginPage = (req, res) => {
 
 
 exports.postLogin = (req, res) => {
-    // console.log('Ausgabe der Form Daten --------------------------------------------');
-    // console.log('Name: '     + req.body.name, 
-    //             'email: '    + req.body.email, 
-    //             'password: ' + req.body.password);
-    
     // Session speichern
     if(req.body.remember_me) {
         req.session.isLoggedIn = true;
@@ -33,8 +26,8 @@ exports.postLogin = (req, res) => {
     // Daten in DB speichern
     User.create({
         email: req.session.email,
-        name: req.session.name,
         password: req.session.password,
+        name: req.session.name,
         locked: false
     }).then(result => {
         res.status(200);

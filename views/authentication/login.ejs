@@ -182,9 +182,9 @@ input[type=submit]:active {
             
             <h1>Login-Form to SpreadLove: <%= name %></h1>
             <form method="POST" action="/login">
-                <p><input type="text"     name="name"     value=" <%= name %> "     placeholder="* Full Name"></p>
-                <p><input type="text"     name="email"    value=" <%= email %> "    placeholder="* Username or Email"></p>
-                <p><input type="password" name="password" value=" <%= password %> " placeholder="* Password"></p>
+                <p><input type="text"     name="name"     value="<%= name %>"     placeholder="Name"></p>
+                <p><input type="text"     name="email"    value="<%= email %>"    placeholder="Email"></p>
+                <p><input type="password" name="password" value="<%= password %>" placeholder="Password"></p>
                 <p class="remember_me">
                 <label>
                     <input type="checkbox" name="remember_me" id="remember_me">

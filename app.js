@@ -15,18 +15,14 @@ let sequelize        = require('./models/establishPostgreConnection');
 let userModel        = require('./models/userModel');
 /*---------------------------------------------------------------------*/
 
-console.log('INITIALIZATION OF APP HAS STARTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-
-
 
 /*----------------------------------------*
  * REDIS: ESTABLISH SESSION-DB CONNECTION *
  *----------------------------------------*/
  if (process.env.REDIS_URL) {
-    // inside if statement
-    var rtg   = require("url").parse(process.env.REDIS_URL);
-    let RedisStore = redis.createClient(rtg.port, rtg.hostname);
-    RedisStore.auth(rtg.auth.split(":")[1]);
+    let redisUrl        = require("url").parse(process.env.REDIS_URL);
+    let RedisStore = redis.createClient(redisUrl.port, redisUrl.hostname);
+    RedisStore.auth(redisUrl.auth.split(":")[1]);
 } else {
     var RedisStore = redis.createClient();
 }
@@ -48,19 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // FavIcon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-
-
-
-
-/*---------------------------------------------------------------------*
- *                    MIDDLEWARE BEFORE                                * 
- *---------------------------------------------------------------------*/
-app.use( (req, res, next) => {
-    console.log('befor Session MW ----------------------------------');
-    console.log(req.session);
-    next();
-});
-
+// REDIS Session Store
 app.use(session({
     name:              'SpreadLove.ONE',
     secret:            'Spr3adL0veS3ss10nSt0re',
@@ -73,6 +57,20 @@ app.use(session({
 }));
 
 
+
+
+/*---------------------------------------------------------------------*
+ *                    MIDDLEWARE BEFORE                                * 
+ *---------------------------------------------------------------------*/
+app.use( (req, res, next) => {
+    console.log('MW START ------------------------------------ VOR ALLEM');
+    //console.log(session.toString());
+    console.log(req.session);
+
+    next();
+});
+
+
 /*---------------------------------------------------------------------*
  *                         ROUTES                                      * 
  *---------------------------------------------------------------------*/
@@ -83,9 +81,7 @@ app.use(session({
  *                    MIDDLEWARE AFTER                                 * 
  *---------------------------------------------------------------------*/
 app.use((req, res, next) => {
-    //nach den Routs MW
-    console.log('nach Routes MW ----------------------------------')
-    console.log(req.session);
+
     next();
 })
 
@@ -97,14 +93,12 @@ app.use(errorController.get404Page);
  *                         START SERVER                                * 
  *---------------------------------------------------------------------*/
 console.log('------------------------------------------------------------------------------');
-console.log('Aufbau DB-Verbindung und Anlage Tabelle:');
-
+console.log('Aufbau DB-Verbindung:');
 try {
     sequelize
         .authenticate()
         .then(result => {
-            console.log('Connection has been established successfully.');
-            
+            console.log('Connection has been established successfully!');
             // DB Sync
             sequelize.sync()
                     .then(result => {
@@ -115,9 +109,7 @@ try {
                     }).catch(err => {
                         sequelize.close();
                     });  
-    
                 })
-        
         .catch(err => {
             console.log(err);
         });
