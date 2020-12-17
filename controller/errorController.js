@@ -1,7 +1,10 @@
 const session = require("express-session");
 
 exports.get404Page = (req, res, next) => {
+
+    console.log('Session auf der FehlerSeite! ----------------------------------------------------');
+    console.log(req.session.isLoggedIn);
+
     res.status(404).render('404', {
-        navLink1:     'LInk1 der Fehler Seite',
         failureTitle: 'Fehler, Seite nicht gefunden!'});
 };

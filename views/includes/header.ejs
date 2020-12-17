@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <title>SpreadLove.one</title>
-
-        <link rel="stylesheet" href="/css/index.css">
+        
+        <!-- 3rd Party Styles -->
         <link rel="stylesheet" href="/css/all.css">
-        <!--<link rel="preconnect" href="https://fonts.gstatic.com">-->
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+        <!-- PWA MANIFEST -->
+        <link rel="manifest" href="/manifest.json">
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="/css/index.css">
     </head>
     <body>
         <!-- HEADER -->
@@ -22,10 +26,15 @@
             <!-- Navigation Items -->
             <nav class="navbar">
                 <ul class="navbar-items">
-                    <li class="navbar-item"><a href="/authentication/login"><%= navLink1 %></a></li>
-                    <li class="navbar-item"><a href="/">Seite 2</a></li>
-                    <li class="navbar-item"><a href="/">Seite 3</a></li>
-                    <li class="navbar-item child"><a href="/"><i class="fas fa-child"></i></a></li>
+                    <li class="navbar-item <%= isLoggedIn ? 'displayFALSE' : 'displayTRUE' %>">
+                        <a href="/authentication/login">Login</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/">Seite 2</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/">Seite 3</a>
+                    </li>
                 </ul>
             </nav>    
         </header>

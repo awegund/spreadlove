@@ -1,0 +1,21 @@
+<!-- HEADER -->
+<%- include('../includes/header.ejs') %>
+
+<!-- SECTION 1: About -->
+<section>
+    <div class="container">
+        
+        <h1>Passwort zurücksetzen:</h1>
+        
+        <form method="POST" action="/authentication/resetPwd">
+            <p><input type="text" name="email" value="<%= email %>" placeholder="Email"></p>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <p class="submit"><input type="submit" name="commit" value="Send password reset mail"></p>
+        </form>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<%- include('../includes/footer.ejs') %>

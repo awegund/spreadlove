@@ -1,6 +1,7 @@
 const express = require('express');
 const indexController = require('../controller/indexController');
-const authenticationController = require('../controller/authenticationController');
+const authController = require('../controller/authController');
+const isAuthenticated = require('../authMiddleware/is-auth');
 /*---------------------------------------------------------------------*/
 
 
@@ -11,12 +12,14 @@ const router = express.Router();
  *---------------------------------------------------------------------*/
 
 router
-    .get('/',                       indexController.getIndex)
-    .get('/authentication/login',   authenticationController.getLoginPage);
+    .get('/',                        indexController.getIndex)
+    .get('/authentication/login',    authController.getLoginPage)
+    .get('/authentication/resetPwd', authController.getResetPWD);
+    // .get('/raspberry/:function',     isAuthenticated,                xxxx);  //muss erst implementiert werden
 
 
 router
-    .post('/login',                 authenticationController.postLogin);
+    .post('/login',                 authController.postLogin);
 
 /*---------------------------------------------------------------------*
  *                         EXPORT                                      * 

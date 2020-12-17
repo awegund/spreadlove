@@ -192,11 +192,12 @@ input[type=submit]:active {
                 </label>
                 </p>
                 <p class="submit"><input type="submit" name="commit" value="login"></p>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             </form>
             </div>
             
             <div class="login-help">
-                <p>Forgot your password? <a href="#">Click here to reset it</a>.</p>
+                <p>Forgot your password? <a href="/authentication/resetPwd">Click here to reset your password</a>.</p>
             </div>
 
         </div>

@@ -1,19 +1,27 @@
 require('dotenv').config();
-var fs          = require('fs');
-let path        = require('path');
-var http        = require('http');
-var bodyParser    = require('body-parser');
+let fs            = require('fs');
+let path          = require('path');
+let http          = require('http');
+let bodyParser    = require('body-parser');
 let favicon       = require('serve-favicon');
-var express       = require('express');
-var session       = require('express-session');
+/*---------------------------------------------------------------------*/
+let express       = require('express');
+let session       = require('express-session');
 let redis         = require('redis');
+/*---------------------------------------------------------------------*/
+let sequelize        = require('./models/establishPostgreConnection');
+// let userModel        = require('./models/userModel');
 /*---------------------------------------------------------------------*/
 let publicRoutes     = require('./routes/indexRoutes');
 let errorController  = require('./controller/errorController');
 /*---------------------------------------------------------------------*/
-let sequelize        = require('./models/establishPostgreConnection');
-let userModel        = require('./models/userModel');
+let csrf             = require('csurf');    //Cross Site Request Forgeing Protection
+const csrfProtection = csrf();
 /*---------------------------------------------------------------------*/
+const flash          = require('connect-flash');   //Info-Error-Warning Handling via Session
+/*---------------------------------------------------------------------*/
+
+
 
 
 /*----------------------------------------*
@@ -37,7 +45,7 @@ app.set('views', 'views');
 /*----------------------------------------*
  *       PARSERS & FAVICON                *
  *----------------------------------------*/
- app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -50,23 +58,25 @@ app.use(session({
     secret:            'Spr3adL0veS3ss10nSt0re',
     resave:             false,
     saveUninitialized:  false,
-    cookie: {
-        maxAge: 3600
-    },
+    // cookie: {
+    //     maxAge: 3600
+    // },
     store:              RedisStore
 }));
 
-
+// CSRF Protection (AFTER Session!)
+app.use(csrfProtection);       // for all POST-Requests a CSRF-Token MUST be existing!
+// FLASH: Cross-Site Info/Warning/Error (AFTER Session!)
+app.use(flash());
 
 
 /*---------------------------------------------------------------------*
  *                    MIDDLEWARE BEFORE                                * 
  *---------------------------------------------------------------------*/
 app.use( (req, res, next) => {
-    console.log('MW START ------------------------------------ VOR ALLEM');
-    //console.log(session.toString());
-    console.log(req.session);
-
+    // Locals that are available in the Views only
+    res.locals.isLoggedIn = req.session.isLoggedIn;
+    res.locals.csrfToken  = req.csrfToken();
     next();
 });
 

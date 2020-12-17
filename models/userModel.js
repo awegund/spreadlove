@@ -20,6 +20,14 @@ const User = sequelize.define('userModel', {
         primaryKey: false,
         allowNull: false
     },
+    // resetToken: {
+    //     type: Sequelize.STRING,
+    //     allowNull: true
+    // },
+    // resetTokenExpiry: {
+    //     type: Sequelize.DATE,
+    //     allowNull: true
+    // },
     name: Sequelize.STRING,
     locked: Sequelize.BOOLEAN
 });
