@@ -1,7 +1,7 @@
 {
     "name": "SpreadLove.ONE",
     "short_name": "SpreadLove",
-    "start_url": "/",
+    "start_url": "https://www.spreadlove.one/",
     "scope": ".",
     "display": "standalone",
     "orientation": "portrait-primary",
