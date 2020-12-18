@@ -1,8 +1,8 @@
-
+/*-------------------------------------------------------------*
+ *             Sonstiges JS
+ *-------------------------------------------------------------*/
 window.onload = () => {
-
     alert('Hey there Babyyyyy!');
-
     footerElements = document.querySelectorAll('.footerElement');
 
     console.log(footerElements);

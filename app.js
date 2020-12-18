@@ -24,6 +24,8 @@ const flash          = require('connect-flash');   //Info-Error-Warning Handling
 
 
 
+
+
 /*----------------------------------------*
  * REDIS: ESTABLISH SESSION-DB CONNECTION *
  *----------------------------------------*/
@@ -34,6 +36,7 @@ const flash          = require('connect-flash');   //Info-Error-Warning Handling
 } else {
     var RedisStore = redis.createClient();
 }
+
 
 /*----------------------------------------*
  *       TEMPLATING ENGINE                *
@@ -73,7 +76,8 @@ app.use(flash());
 /*---------------------------------------------------------------------*
  *                    MIDDLEWARE BEFORE                                * 
  *---------------------------------------------------------------------*/
-app.use( (req, res, next) => {
+// LOCALS for Views
+ app.use( (req, res, next) => {
     // Locals that are available in the Views only
     res.locals.isLoggedIn = req.session.isLoggedIn;
     res.locals.csrfToken  = req.csrfToken();
