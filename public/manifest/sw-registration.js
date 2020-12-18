@@ -1,3 +1,6 @@
+let deferredPrompt;
+
+
 /*-------------------------------------------------------------*
  *             Service-Worker registrieren
  *-------------------------------------------------------------*/
@@ -16,3 +19,11 @@ function initializeDocument() {
     }
 }
 
+
+// PWA Install Banner
+window.addEventListener('beforeinstallprompt', (event) => {
+    console.log('Display Banner: ', event);
+    event.preventDefault();
+    deferredPrompt = event;
+    return false;
+})
