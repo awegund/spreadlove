@@ -1,14 +1,14 @@
-/*-------------------------------------------------------------*
- *             Service-Worker registrieren
- *-------------------------------------------------------------*/
-if('serviceWorker' in navigator){
-    console.log('Browser able to execute ServiceWorkers!');
-    navigator.serviceWorker
-        .register('/service-worker.js')
-        .then(success => {
-            alert('ServiceWorker registered!');
-        })
-        .catch(err =>  {
-            alert('Error: ' + err);
-        })
-}
+// Install SW
+self.addEventListener('install', function(event) {
+    console.log('[ServiceWorker installing:] ', event);
+})
+
+self.addEventListener('activate', function(event) {
+    console.log('[ServiceWorker activation:] ', event);
+})
+
+// FETCH
+self.addEventListener('fetch', function(event) {
+    console.log('[ServiceWorker fetch-event:] ', event);
+    event.respondWith(fetch(event.request));
+})

@@ -23,9 +23,6 @@ const flash          = require('connect-flash');   //Info-Error-Warning Handling
 
 
 
-
-
-
 /*----------------------------------------*
  * REDIS: ESTABLISH SESSION-DB CONNECTION *
  *----------------------------------------*/
@@ -43,7 +40,9 @@ const flash          = require('connect-flash');   //Info-Error-Warning Handling
  *----------------------------------------*/
 var app = express();  
 app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.set('views', path.join(__dirname, 'public', 'views'));
+
+
 
 /*----------------------------------------*
  *       PARSERS & FAVICON                *

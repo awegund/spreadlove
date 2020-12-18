@@ -2,14 +2,14 @@
  *             Sonstiges JS
  *-------------------------------------------------------------*/
 window.onload = () => {
-    alert('Hey there Babyyyyy!');
+    // alert('Hey there Babyyyyy!');
     footerElements = document.querySelectorAll('.footerElement');
 
     console.log(footerElements);
 
     for (let i = 0; i < footerElements.length; i++) {
-        setTimeout(() => {
+        setInterval(() => {
             footerElements[i].style.backgroundColor = 'black';
-        }, 1000);
+        }, 2000);
     }
 }
