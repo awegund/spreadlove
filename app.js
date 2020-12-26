@@ -10,7 +10,6 @@ let session       = require('express-session');
 let redis         = require('redis');
 /*---------------------------------------------------------------------*/
 let sequelize        = require('./models/establishPostgreConnection');
-// let userModel        = require('./models/userModel');
 /*---------------------------------------------------------------------*/
 let publicRoutes     = require('./routes/indexRoutes');
 let errorController  = require('./controller/errorController');

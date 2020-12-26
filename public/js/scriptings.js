@@ -1,20 +1,27 @@
-let btnPWAShowBanner = document.querySelector('.btnPWAShowBanner');
-
-
 /*-------------------------------------------------------------*
- *             Sonstiges JS
+ *             Sonstiges JS                                    *
  *-------------------------------------------------------------*/
-window.onload = () => {
-    footerElements = document.querySelectorAll('.footerElement');
-    setInterval(() => {
-            for (let i = 0; i < footerElements.length; i++) {
-                footerElements[i].style.backgroundColor = 'black';
-            }
-        }, 2000);
+window.onload = function() {
+
+    // Scroll Event einstellen
+    $(window).on('scroll', function() {
+        if( $(window).scrollTop() > 50 ){
+            $('nav.navbar').addClass('bg-white');
+            $('nav.navbar').removeClass('pt-3');
+            $('nav.navbar').removeClass('pb-5');
+        } else {
+            $('nav.navbar').removeClass('bg-white');
+            $('nav.navbar').addClass('pt-3');
+            $('nav.navbar').addClass('pb-5');
+        }
+    });
 }
 
 
-// PWA Show Installation Banner
+/*-------------------------------------------------------------*
+ *             PWA Show Installation Banner                    *
+ *-------------------------------------------------------------*/
+let btnPWAShowBanner = document.querySelector('.btnPWAShowBanner');
 btnPWAShowBanner.addEventListener('click', (event) => {
     if(deferredPrompt){
         deferredPrompt.prompt();

@@ -12,14 +12,18 @@ const router = express.Router();
  *---------------------------------------------------------------------*/
 
 router
-    .get('/',                        indexController.getIndex)
-    .get('/authentication/login',    authController.getLoginPage)
-    .get('/authentication/resetPwd', authController.getResetPWD);
-    // .get('/raspberry/:function',     isAuthenticated,                xxxx);  //muss erst implementiert werden
+    .get('/',                               indexController.getIndex)
+    .get('/authentication/login',           authController.getLoginPage)
+    .get('/authentication/getAdminView',    authController.getAdminView)
+    .get('/authentication/register',        authController.getRegisterPage)
+    .get('/authentication/resetPwd',        authController.getResetPWD)
+    .get('/authentication/displayAllUsers', authController.getAllUsers);
+    // .get('/raspberry/:function',         isAuthenticated,                xxxx);  //muss erst implementiert werden
 
 
 router
-    .post('/login',                 authController.postLogin);
+    .post('/authentication/login',          authController.postLogin)
+    .post('/authentication/registerUser',   authController.postRegisterUser);
 
 /*---------------------------------------------------------------------*
  *                         EXPORT                                      * 

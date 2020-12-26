@@ -1,7 +1,7 @@
 {
     "name": "SpreadLove.ONE",
     "short_name": "SpreadLove",
-    "start_url": "index.ejs",
+    "start_url": "/",
     "display": "standalone",
     "orientation": "portrait-primary",
     "background_color": "#fff",

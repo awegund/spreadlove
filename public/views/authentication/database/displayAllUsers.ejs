@@ -1,0 +1,55 @@
+<!-- HEADER -->
+<%- include('../../includes/header.ejs') %>
+
+<!-- MAIN WINDOW AREA -->
+<main>    
+  <div class="container mt-5 pt-5">
+      <h1>SpreadLove User:</h1>
+
+      <form action="/login" method="POST">
+          <div class="row">
+            <!-- LINKE SPALTE -->
+              <div class="col">
+              
+                <% if(allUsers){ %>
+
+                <!-- TABLE -->
+                <table class="table table-striped table-hover table-responsive">
+                    <thead class="bg-warning">
+                        <th>ID</th>
+                        <th>E-Mail</th>
+                        <th>Password</th>
+                        <th>Name</th>
+                        <th>locked</th>
+                        <th>createdAt</th>
+                        <th>updatedAt</th>
+                    </thead>
+                    <tbody>
+                        <% allUsers.forEach( user => { %>
+                        <tr>
+                            <td><%- user.id %></td>
+                            <td><%- user.email %></td>
+                            <td><%- user.password %></td>
+                            <td><%- user.name %></td>
+                            <td><%- user.locked %></td>
+                            <td><%- user.createdAt %></td>
+                            <td><%- user.updatedAt %></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <% } %>   <!--end UserTable-->
+
+                
+              </div> <!--end col-->
+          </div> <!--end row-->
+      </form>
+
+  </div> <!-- CONTAINER END -->
+</main>
+
+
+
+
+<!-- FOOTER -->
+<%- include('../../includes/footer.ejs') %>

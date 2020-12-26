@@ -1,0 +1,104 @@
+<!-- HEADER -->
+<%- include('../../includes/header.ejs') %>
+
+<!-- MAIN WINDOW AREA -->
+<main>    
+  <div class="container mt-5 pt-5">
+      <h1>Admin Desktop:</h1>
+
+
+        <div class="row">
+
+            <!-- START COL TABLES -->
+            <div class="col-md-2">
+                <% if(tables){ %>
+                    <div class="form-group">
+                        <label for="tabellen">Tabellen:</label>
+                        <select id="tabellen" name="tabellen" class="form-control">
+                            <% tables.forEach( table => { %>
+                                <option value="<%- table %>"><%- table %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <% } %>
+              </div> 
+              <!-- END COL TABLES -->
+
+              <!-- START COL TABLEATTRIBUTES -->
+              <div class="col-md-12">
+
+                    <table class="table table-striped table-hover table-responsive">
+                        <thead class="bg-dark text-white">
+                            <th>Table Catalog</th>
+                            <th>Table Schema</th>
+                            <th>Table Name</th>
+                            <th>Column Name</th>
+                            <th>Pos</th>
+                            <th>Col Default</th>
+                            <th>is Nullable</th>
+                            <th>Data Type</th>
+                            <th>Max Length</th>
+                        </thead>
+                        <tbody>
+                            <% tableAttributes.forEach( attr => { %>
+                            <tr>
+                                <td><%- attr.table_catalog %></td>
+                                <td><%- attr.table_schema %></td>
+                                <td><%- attr.table_name %></td>
+                                <td><%- attr.column_name %></td>
+                                <td><%- attr.ordinal_position %></td>
+                                <td><%- attr.column_default %></td>
+                                <td><%- attr.is_nullable %></td>
+                                <td><%- attr.data_type%></td>
+                                <td><%- attr.character_maximum_length %></td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+
+              </div>
+              <!-- ENDE COL TABLEATTRIBUTES -->
+
+          </div> <!--end row-->
+      </form>
+
+  </div> <!-- CONTAINER END -->
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="form-group">
+    <input class="btn btn-success" type="submit" name="commit" value="Register">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">  
+    </div> -->
+            
+  
+
+<!-- FOOTER -->
+<%- include('../../includes/footer.ejs') %>

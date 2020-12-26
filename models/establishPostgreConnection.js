@@ -10,7 +10,8 @@ const Sequelize = require('sequelize').Sequelize;
             require: true,
             rejectUnauthorized: false
         } 
-        } 
-    });
+    } 
+});
+
 
 module.exports = sequelize;

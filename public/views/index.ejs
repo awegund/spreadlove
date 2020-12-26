@@ -2,26 +2,174 @@
 <%- include('./includes/header.ejs') %>
 
 
-<!-- SECTION HEADER -->
-<!-- <main>
-    <section class="firstSection">
-        <h1>You have finally found what you were searching for!</h1>
-    </section>
-</main> -->
 
-<section class="landingImage">
-    <div class="landingContainer" style="font-size: 4rem; color: darkblue">
+
+<!--===========================================================================
+                          HERO-SCTION                                       -->
+<div class="container-fluid d-relative">
+    <section id="home" class="jumbotron jumbotron-fluid hero-bg">
+    </section>
+
+    <div class="container hero-section">
         <% if(name) { %>
-            SpreadLove: <%= name %>! <i class="fas fa-child" style='font-size:5rem; color:red'></i><i class="fas fa-heart" style='position: relative; font-size:2.2rem; top: -4rem; left:-1rem; color:red; transform:rotate(20deg);'></i>
+            <h1 class="display-5 text-dark mt-5 pt-5 mb-4">SpreadLove. <span class="danceFont danceRotate"><%= name %></span>!</h1>
         <% } else { %>
-            SpreadLove Every.ONE! <i class="fas fa-child" style='font-size:5rem; color:darkblue'></i>
+            <h1 class="display-5 text-dark mt-5 pt-5 mb-4">SpreadLove. <span class="danceFont danceRotate">Every</span>ONE</h1>
         <% } %>
+
+        <p class="lead text-dark">Lasst Liebe da!</p>
+        <a href="#aboutUs" role="button" class="btn btn-round btn-lg btn-outline-dark mt-2">
+            <small class="pr2">Deine Reise beginnt hier...</i> <i class="bi bi-arrow-down-circle-fill iconDown"></i></small> 
+        </a>
     </div>
-    <% if(message) { %>
-        <div class="message"><%= message %></div>
-    <% } %>
+</div>
+
+<!--===========================================================================
+                          ABOUT US                                          -->
+<section id="aboutUs" class="d-relative">
+    <div class="container">
+
+        <!-- START SINGLE ROW -->
+        <div class="row">
+            <!-- START LEFT COLUMN -->
+            <div class="col-lg-6 mr-5 text-center">
+                <h1 class="mb-4">About us...</h1>
+                <p>Meine Frau, Alicia, und ich haben uns 2014 in einem Fitnessstudio in Wien kennen gelernt! 
+                    Bereits nach wenigen Wochen war klar: <span class="lead">diese Frau heirate ich einmal!</span> 
+                </p>
+                <br>
+                <p>
+                    Es ist für mich nach knapp sieben (7!) Jahren noch immer ein Wunder und ich bin unsagbar 
+                    dankbar! Ich liebe einfach alles an diesem Mädchen: Sie hat ein riesiges Herz, ist klug, lustig, 
+                    ein bisschen verrückt und ausnehmend schön!
+                </p>
+                <br>
+                <p>
+                    Seit Dezember 2017 sind wir verheiratet, und nun sind wir überglücklich auch noch mit einer kleinen
+                    Prinzessin schwanger zu sein! 
+                </p>
+                <p class="text-uppercase text-muted mt-4"><small>&mdash; Andreas S. W. (Dec. 2020)</small></p>
+            </div> <!-- end col -->
+            
+            <!-- START RIGHT COLUMN -->
+            <div class="col">
+                <div class="img-bg d-none d-lg-inline">
+                    <img class="img-fluid" src="/img/alicia_landscape.jpg" alt="About us...">
+                </div>
+            </div> <!-- end col -->
+        </div> <!--end row-->
+
+    </div>
 </section>
-<button class="btnPWAShowBanner" style="display:block; padding: 2rem 3rem; background-color: rgba(200, 200, 160, .7);">Installation banner anzeigen</button>
+
+<!--===========================================================================
+                          QUOTES                                            -->
+<section id="quotes" class="d-relative quotes-bg">
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8 text-center">
+                <h1 class="mb-4">Moments!</h1>
+                <p class="text-white">
+                    Im Laufe der Jahre haben wir viele traumhafte Momente erlebt... 
+                </p>
+            </div> <!--ende col-->
+        </div> <!--ende row-->
+
+        <div class="row justify-content-between">
+            <div class="col-md text-center mx-5 mr-md-0 mr-lg-3 mb-5 mb-md-auto">
+                <img src="/img/OCHB2246.JPG" alt="quote1" class="img-fluid mb-4 rounded-circle">
+                <h3 class="mb-3">Alicia</h3>
+                <p class="text-white px-4">
+                    ... das ist meine wunderschöne Frau Alica!
+                </p>
+            </div><!--ende col-->
+            <div class="col-md text-center mx-5 mx-md-0 mx-lg-3 mb-5 mb-md-auto">
+                <img src="/img/ohBaby.JPG" alt="quote2" class="img-fluid mb-4 rounded-circle">
+                <h3 class="mb-3">Alicia</h3>
+                <p class="text-white px-4">
+                    ... und hier auch!
+                </p>
+            </div><!--ende col-->
+            <div class="col-md text-center mx-5 ml-md-0 ml-lg-3">
+                <img src="/img/alicia.JPG" alt="quote3" class="img-fluid mb-4 rounded-circle">
+                <h3 class="mb-3">Alicia</h3>
+                <p class="text-white px-4">
+                    ... und gleich noch einmal!
+                </p>
+            </div><!--ende col-->
+
+        </div> <!--ende row-->
+    </div> <!--ende container-->
+</section>
+
+
+<!--===========================================================================
+                          GALLERIE                                          -->
+ <!-- <section id="gallery">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col mb-5 text-center">
+                <h1>Gallerie</h1>
+                <div class="card-columns">
+                    <div class="card">
+                        <img class="card-img" src="" alt="">
+                    </div>
+                </div> 
+            </div>  
+        </div> 
+    </div> 
+</section> -->
+
+
+
+
+<div id="carouselExampleCaptions" class="carousel slide" style="height: 400px;" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/img/alicia.JPG" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/img/alicia_landscape.JPG" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/img/ohBaby.JPG" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+
+
+
+
+<section>
+    <button class="btnPWAShowBanner">Installation banner anzeigen</button>
+</section>
+
 
 <!-- FOOTER -->
 <%- include('./includes/footer.ejs') %>

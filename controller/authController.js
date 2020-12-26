@@ -1,7 +1,9 @@
 //const session = require("express-session");
 const User     = require('../models/userModel');
+const dbAdmin  = require('../models/db_admin');
 const bcrypt   = require('bcryptjs');
 const crypto   = require('crypto');
+const { resolve } = require('path');
 /*---------------------------------------------------------------------*/
 
 
@@ -11,8 +13,6 @@ const crypto   = require('crypto');
  *                  LOGIN
  *-----------------------------------------------*/
 exports.getLoginPage = (req, res) => { 
-    console.log('Login Session Status ----------------------------------------------');
-    console.log(req.session);
     res.status(200);
     res.render('authentication/login', {
         name:       req.session.name,
@@ -22,7 +22,42 @@ exports.getLoginPage = (req, res) => {
 }
 
 
+exports.getRegisterPage = (req, res) => { 
+    res.status(200);
+    res.render('authentication/register', {
+        name:       req.session.name,
+        email:      req.session.email
+    }); 
+}
+
+
 exports.postLogin = (req, res) => {
+    User.findOne({ where: { email: req.body.email }})
+        .then(UserModel => {
+            let user = UserModel.get();
+            console.log(user.password);
+
+            if(bcrypt.compareSync(req.body.password, user.password)) {
+                //Redirect
+                res.status(200);
+                res.redirect('/authentication/getAdminView');                    
+            } else {
+                console.log(err);
+            }
+
+        })
+        .catch(err => {
+            console.log('Error: ', err);
+            //Cross-Site Message mit Session weiterreichen 
+            req.flash('message', 'E-Mail or password does not exist!');
+            //Redirect
+            res.status(400);
+            res.redirect('/');
+        })
+}
+
+
+exports.postRegisterUser = (req, res) =>{
     let hashPWD = bcrypt.hashSync(req.body.password, 12);
     // Daten in DB speichern
     User.create({
@@ -42,17 +77,14 @@ exports.postLogin = (req, res) => {
         }
         //Redirect
         res.status(200);
-        res.redirect('/');
-
+        res.redirect('/authentication/displayAllUsers');
+    
     }).catch(err => {
         console.log('Fehler aufgetreten: ' + err);
     });
-};
+}
 
 
-/*-----------------------------------------------*
- *                  PWD Reset
- *-----------------------------------------------*/
 exports.getResetPWD = (req, res) => { 
     res.status(200);
     res.render('authentication/resetPwd', {
@@ -84,4 +116,62 @@ exports.postResetPWD = (req, res, next) => {
             })
     });
     
+}
+
+
+/*-----------------------------------------------*
+ *                  ADMIN
+ *-----------------------------------------------*/
+exports.getAllUsers = (req, res) => {
+    // Daten in DB speichern
+    User.findAll({ where: { locked: false }})
+        .then(allUsers => {
+
+            console.log(allUsers);
+
+            //Cross-Site Message mit Session weiterreichen 
+            req.flash('message', 'User erfolgreich gelesen!');          
+            //Redirect
+            res.status(200);
+            res.render('authentication/database/displayAllUsers', {
+                allUsers: allUsers
+            }); 
+
+        }).catch(err => {
+            console.log('User konnten nicht gelesen werden: ' + err);
+        });
+};
+
+
+exports.getAdminView = (req, res) => {
+    dbAdmin.dbTables
+           .then(tables => {
+
+                if(!tables){
+                    //Cross-Site Message mit Session weiterreichen 
+                    req.flash('message', 'Es konnten keine Tabellen geladen werden!');
+                    //Redirect
+                    res.status(400);
+                    res.redirect('/');
+                }
+                dbAdmin.colAttributes(tables[0])
+                       .then(tableAttributes => {
+
+                            console.log('Attribs: --->>>> ', tableAttributes);
+
+                            res.status(200);
+                            res.render('authentication/database/database_admin', {
+                                tables: tables,
+                                tableAttributes: tableAttributes
+                            }); 
+
+                       })
+                       .catch(err => {
+                           console.log('Es konnten keine Tabellen-Atribute geladen werden: ', err);
+                       })
+            })
+           .catch(err => {
+                console.log('Tabellen konnten nicht geladen werden!!!', err);
+           });
+
 }
