@@ -2,14 +2,19 @@
 <%- include('./includes/header.ejs') %>
 
 
-
+<div data-aos="zoom-in-down" id="backtotop">
+    <a href="#home">
+        <i class="bi bi-arrow-up-square-fill"></i>
+    </a>
+</div>
 
 <!--===========================================================================
                           HERO-SCTION                                       -->
 <div class="container-fluid d-relative">
-    <section id="home" class="jumbotron jumbotron-fluid hero-bg">
-    </section>
+    <!-- IMG -->
+    <section data-aos="fade-right" id="home" class="jumbotron jumbotron-fluid hero-bg"></section>
 
+    <!-- TEXT & BTN -->
     <div class="container hero-section">
         <% if(name) { %>
             <h1 class="display-5 text-dark mt-5 pt-5 mb-4">SpreadLove. <span class="danceFont danceRotate"><%= name %></span>!</h1>
@@ -17,12 +22,13 @@
             <h1 class="display-5 text-dark mt-5 pt-5 mb-4">SpreadLove. <span class="danceFont danceRotate">Every</span>ONE</h1>
         <% } %>
 
-        <p class="lead text-dark">Lasst Liebe da!</p>
+        <p class="lead text-dark">Hommage an meine geliebte Frau Alicia! <i class="bi bi-heart"></i></p>
         <a href="#aboutUs" role="button" class="btn btn-round btn-lg btn-outline-dark mt-2">
-            <small class="pr2">Deine Reise beginnt hier...</i> <i class="bi bi-arrow-down-circle-fill iconDown"></i></small> 
+            <small class="pr2">Lies mehr von uns...</i> <i class="bi bi-arrow-down-circle-fill iconDown"></i></small> 
         </a>
     </div>
 </div>
+
 
 <!--===========================================================================
                           ABOUT US                                          -->
@@ -34,33 +40,36 @@
             <!-- START LEFT COLUMN -->
             <div class="col-lg-6 mr-5 text-center">
                 <h1 class="mb-4">About us...</h1>
-                <p>Meine Frau, Alicia, und ich haben uns 2014 in einem Fitnessstudio in Wien kennen gelernt! 
-                    Bereits nach wenigen Wochen war klar: <span class="lead">diese Frau heirate ich einmal!</span> 
+                <p>Meine Frau, Alicia, und ich haben uns 2013 in einem Fitnessstudio in Wien kennen gelernt! 
+                    Nachdem wir Anfang 2014 auch ein Paar geworden sind, war für mich nach wenigen Wochen klar:
+                    <br><span style="font-weight: bold">diese Frau will ich heiraten!</span>
                 </p>
                 <br>
                 <p>
                     Es ist für mich nach knapp sieben (7!) Jahren noch immer ein Wunder und ich bin unsagbar 
-                    dankbar! Ich liebe einfach alles an diesem Mädchen: Sie hat ein riesiges Herz, ist klug, lustig, 
-                    ein bisschen verrückt und ausnehmend schön!
+                    dankbar! Ich liebe einfach alles an diesem Mädchen: Sie hat ein riesiges Herz, ist intelligent, lustig, 
+                    ein bisschen verrückt und ausnehmend hübsch!
                 </p>
                 <br>
                 <p>
-                    Seit Dezember 2017 sind wir verheiratet, und nun sind wir überglücklich auch noch mit einer kleinen
-                    Prinzessin schwanger zu sein! 
+                    Seit Dezember 2017 sind wir verheiratet, und unsere Bindung zueinander ist dadurch nur noch stärker geworden.
+                    Inzwischen sind wir zudem überglücklich auch noch mit einer kleinen Prinzessin schwanger zu sein! Im April 
+                    2021 werden wir das Produkt unserer Liebe hoffentlich in Händen halten dürfen!
                 </p>
                 <p class="text-uppercase text-muted mt-4"><small>&mdash; Andreas S. W. (Dec. 2020)</small></p>
             </div> <!-- end col -->
             
             <!-- START RIGHT COLUMN -->
             <div class="col">
-                <div class="img-bg d-none d-lg-inline">
-                    <img class="img-fluid" src="/img/alicia_landscape.jpg" alt="About us...">
+                <div  data-aos="fade-left" class="img-bg d-none d-lg-inline">
+                    <img class="img-fluid" src="/img/alicia_danube.png" alt="About us...">
                 </div>
             </div> <!-- end col -->
         </div> <!--end row-->
 
     </div>
 </section>
+
 
 <!--===========================================================================
                           QUOTES                                            -->
@@ -69,9 +78,9 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-8 text-center">
-                <h1 class="mb-4">Moments!</h1>
-                <p class="text-white">
-                    Im Laufe der Jahre haben wir viele traumhafte Momente erlebt... 
+                <h1 class="mb-4">Schwanger!!!</h1>
+                <p class="text-dark lead">
+                    Ein paar Impressionen... <i class="bi bi-heart"></i> 
                 </p>
             </div> <!--ende col-->
         </div> <!--ende row-->
@@ -106,7 +115,7 @@
 
 <!--===========================================================================
                           GALLERIE                                          -->
- <!-- <section id="gallery">
+<section id="gallery">
     <div class="container">
         <div class="row mb-5">
             <div class="col mb-5 text-center">
@@ -119,12 +128,12 @@
             </div>  
         </div> 
     </div> 
-</section> -->
+</section>
 
 
 
 
-<div id="carouselExampleCaptions" class="carousel slide" style="height: 400px;" data-bs-ride="carousel">
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>

@@ -2,10 +2,12 @@
 html {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
+  scroll-behavior: smooth;
 }
 
-/*======= ALLGEMEIN ======*/
+/*========================= ALLGEMEIN =========================*/
 body, p {
+  position: relative;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   margin: 0;
@@ -47,7 +49,6 @@ p h5.border-line,
 p h6.border-line,
 p .font-alt.border-line {
   padding-bottom: .5rem;
-  border-bottom: 2px solid #bd45a3;
 }
 
 body .danceFont, p .danceFont {
@@ -60,7 +61,8 @@ body .btn-round, p .btn-round {
 }
 
 body section, p section {
-  padding: 5rem 0;
+  padding-top: 5rem;
+  height: 100vh;
 }
 
 body .d-relative, p .d-relative {
@@ -70,31 +72,61 @@ body .d-relative, p .d-relative {
 body .bg-overlay, p .bg-overlay {
   height: 100%;
   width: 100%;
-  background-color: rgba(200, 200, 200, 0.6);
+  background-color: rgba(250, 250, 250, 0.7);
   position: absolute;
   top: 0;
   left: 0;
 }
 
-/*======= NAVIGATION ======*/
+body #backtotop, p #backtotop {
+  position: fixed;
+  width: 1.4rem;
+  height: 1.4rem;
+  bottom: 3.6rem;
+  right: 1rem;
+  z-index: 9999;
+}
+
+body #backtotop a, p #backtotop a {
+  text-decoration: none;
+  color: #bd45a3;
+  font-size: 1.8rem;
+  text-shadow: 0 0 20px gray;
+}
+
+/*========================= NAVIGATION =========================*/
 nav {
   -webkit-transition: 1.4s ease-in-out;
   transition: 1.4s ease-in-out;
 }
 
+.navbar .container .navbar-brand {
+  -webkit-transition: 1.4s all;
+  transition: 1.4s all;
+}
+
+.navbar .container .navbar-brand:hover, .navbar .container .navbar-brand:active {
+  text-shadow: 0 0 12px #bd45a3;
+}
+
 .navbar .navbar-nav .nav-link,
 button .navbar-toggler {
   color: #535252;
+  -webkit-transition: 0.8s all ease-in-out;
+  transition: 0.8s all ease-in-out;
 }
 
 .brand-logo-40 {
   height: 40px;
+  border-radius: 20%;
 }
 
 .navbar button:hover,
 .navbar button:focus,
-.navbar .nav-link:hover {
+.navbar .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
   color: #bd45a3;
+  text-shadow: 0 0 12px #bd45a3;
 }
 
 .showLogin {
@@ -105,9 +137,9 @@ button .navbar-toggler {
   visibility: hidden;
 }
 
-/*======= HERO SECTION ======*/
+/*========================= HERO SECTION =========================*/
 .hero-bg {
-  background: url("/img/alicia_hero.png") 30% 0 fixed no-repeat;
+  background: url("/img/alicia_hero.png") 30% 3rem fixed no-repeat;
   height: 100vh;
   width: 100%;
   background-size: contain;
@@ -126,28 +158,31 @@ button .navbar-toggler {
   font-size: larger;
 }
 
-/*======= ABOUT US SECTION ======*/
+.hero-section .btn {
+  -webkit-transition: 1.4s all ease-in-out;
+  transition: 1.4s all ease-in-out;
+}
+
+/*========================= ABOUT US SECTION =========================*/
+#aboutUs {
+  width: 100%;
+  background-color: rgba(240, 240, 240, 0.6);
+}
+
 .img-bg {
   position: absolute;
   overflow: hidden;
   right: 0;
-  bottom: 0;
-  width: 50vh;
+  top: -5rem;
+  width: 100%;
 }
 
-#home .btn {
-  -webkit-transition: 1s all ease-in-out;
-  transition: 1s all ease-in-out;
-}
-
-/*======= QUOTES ======*/
+/*========================= QUOTES =========================*/
 .quotes-bg {
-  background: url("/img/alicia_landscape.JPG") 30% 0 fixed no-repeat;
+  background: url("/img/gh_kampl_styria.jpg") 60% 3rem fixed no-repeat;
   height: 100%;
   width: 100%;
   background-size: cover;
-  -webkit-filter: brightness(1.14);
-          filter: brightness(1.14);
   /* Medium devices (landscape tablets, 768px and up) */
 }
 
@@ -155,6 +190,7 @@ button .navbar-toggler {
   border: 5px solid #535252;
 }
 
+/*========================= FOOTER =========================*/
 footer {
   position: fixed;
   bottom: 0;
