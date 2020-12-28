@@ -80,7 +80,7 @@ p .font-alt.border-line {
   p .font-alt {
     font-family: 'Raleway', sans-serif;
     color: #bd45a3;
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 }
 
@@ -138,6 +138,12 @@ body #backtotop a, p #backtotop a {
 nav {
   -webkit-transition: 1.4s ease-in-out;
   transition: 1.4s ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+  nav a {
+    font-size: 1rem;
+  }
 }
 
 .navbar .container .navbar-brand {

@@ -41,7 +41,7 @@ body, p {
         @media only screen and (max-width: 768px) {
             font-family: 'Raleway', sans-serif;
             color: #bd45a3;
-            font-size: 1.4rem;
+            font-size: 1rem;
         }
     }
 
@@ -104,6 +104,12 @@ body, p {
 /*========================= NAVIGATION =========================*/
 nav{
     transition: 1.4s ease-in-out;
+
+    a{
+        @media only screen and (max-width: 768px) {
+            font-size: 1rem;
+        }
+    }
 }
 
 .navbar .container .navbar-brand{
@@ -119,6 +125,7 @@ nav{
 button .navbar-toggler {
     color:rgb(83, 82, 82);
     transition: 0.8s all ease-in-out;
+    
 }
 
 .brand-logo-40{
@@ -132,6 +139,7 @@ button .navbar-toggler {
 .navbar .navbar-nav .nav-link.active{
     color: #bd45a3;
     text-shadow: 0 0 12px #bd45a3;
+
 }
 
 
