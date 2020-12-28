@@ -11,6 +11,16 @@ body, p {
     margin: 0;
     padding: 0;
 
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (max-width: 768px) {
+        position: relative;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+        margin: 0;
+        padding: 0;
+        font-size: 0.9rem;
+    }
+
     /* Überschriften */
     h1,
     h2,
@@ -24,6 +34,14 @@ body, p {
 
         &.border-line{
             padding-bottom: .5rem;
+        }
+
+
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (max-width: 768px) {
+            font-family: 'Raleway', sans-serif;
+            color: #bd45a3;
+            font-size: 1.4rem;
         }
     }
 
@@ -41,6 +59,11 @@ body, p {
     section{
         padding-top: 5rem;
         height: 100vh;
+
+        @media only screen and (max-width: 768px) {
+            padding: 2rem 0;
+            height: 100vh;
+        }
     }
 
     /* Hilfsklassen */
@@ -129,13 +152,12 @@ button .navbar-toggler {
     background-size: contain;
 
     /* Medium devices (landscape tablets, 768px and up) */
-    // @media only screen and (max-width: 768px) {
-    //     background: url('/img/hero-image_mobile2.jpg') 0 4% fixed no-repeat;
-    //     height: 100vh;
-    //     width: 100%;
-    //     background-size: cover;
-    //     filter: brightness(1.14);    
-    // }
+    @media only screen and (max-width: 768px) {
+        background: url('/img/alicia_hero.png') 5rem 2rem fixed no-repeat;
+        height: 95vh;
+        width: 100%;
+        background-size: contain;   
+    }
 }
 
 .hero-section{
@@ -143,11 +165,42 @@ button .navbar-toggler {
     top:40%;
     right: 15%;
     width: auto;
+    
+    h1{
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (max-width: 768px) {
+            position: absolute;
+            top:2rem;
+            right: 6.5rem;
+            width: 200px;
+            font-size: 1rem;
+        }
+    }
+
+    p{
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (max-width: 768px) {
+            position: absolute;
+            top:10rem;
+            right: 8.5rem;
+            width: 165px;
+            font-size: 0.7rem;
+        }        
+    }
+
+    a{
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (max-width: 768px) {
+            position: absolute;
+            top:13rem;
+            right: 9.5rem;
+            width: 150px;
+            font-size: 0.7rem;
+        }                
+    }
+
 }
 
-// #home .row{
-//     height: 80%;
-// }
 
 .iconDown{
     color:#bd45a3;
@@ -164,6 +217,13 @@ button .navbar-toggler {
 #aboutUs{
     width: 100%;
     background-color: rgba(240,240,240,0.6);
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+        background-color: rgba(240,240,240,0.6);
+        font-size: .9rem;
+    }
 }
 
 
@@ -182,15 +242,6 @@ button .navbar-toggler {
     height: 100%;
     width: 100%;
     background-size: cover;
-    
-    /* Medium devices (landscape tablets, 768px and up) */
-    // @media only screen and (max-width: 768px) {
-    //     background: url('/img/hero-image_mobile2.jpg') 0 4% fixed no-repeat;
-    //     height: 100vh;
-    //     width: 100%;
-    //     background-size: cover;
-    //     filter: brightness(1.14);    
-    // }    
 }
 
 #quotes .rounded-circle{
@@ -214,20 +265,46 @@ button .navbar-toggler {
 
 
 /*========================= GALLERY =========================*/
-#gallery{
+#quotes{
     width: 100%;
-    height: 80vh;
+    height: 30vh;
     margin: 0;
     padding: 0;
-    background-color: rgba(240,240,240,0.6);
+    background: url('/img/kleine_kanzel_2020_2.jpg') 50% 6rem fixed no-repeat;
+    background-size: cover;
+      
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+        height: 30vh;
+        margin: 0;
+        padding: 0;
+        background: url('/img/kleine_kanzel_2020_2.jpg') 66% 13rem fixed no-repeat;
+        background-size: cover;
+    } 
 
-    .carousel-inner .carousel-item img {
-        height: 80vh;
-        margin: auto;
+    h1{
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (max-width: 768px) {
+            margin-bottom: 0.5rem !important;
+        } 
     }
 }
 
+#gallerie-slider p{
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (max-width: 768px) {
+        font-size: .8rem;
+    } 
+}
 
+#gallerie-slider .carousel-indicators{
+    bottom: -2rem;
+}
+
+#gallerie-slider .carousel-indicators li{
+    max-width: 3rem;
+}
 
 
 /*========================= FOOTER =========================*/
@@ -236,4 +313,28 @@ footer{
     bottom: 0;
     left: 0;
     width: 100%;
+
+    .container{
+
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (max-width: 768px) {
+            font-size: .7rem;
+        } 
+        
+        .row{
+
+            .col{
+
+                a{
+                    text-decoration: none;
+                    transition: 1s all ease-in-out;
+
+                    &:hover,
+                    &:focus{
+                        text-shadow: 0 0 12px #bd45a3;
+                    }
+                }
+            }
+        }
+    }
 }

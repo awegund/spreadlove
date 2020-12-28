@@ -13,6 +13,9 @@ const router = express.Router();
 
 router
     .get('/',                               indexController.getIndex)
+    .get('/impressum',                      indexController.getImpressum)
+    .get('/dsgvo',                          indexController.getDSGVO)
+    .get('/3rdparty',                       indexController.get3rdparty)
     .get('/authentication/login',           authController.getLoginPage)
     .get('/authentication/getAdminView',    authController.getAdminView)
     .get('/authentication/register',        authController.getRegisterPage)

@@ -6,42 +6,37 @@
     "orientation": "portrait-primary",
     "background_color": "#fff",
     "theme_color": "#3F5151B5",
-    "description": "<3 SpreadLove EveryONE <3",
+    "description": "<3 SpreadLove.ONE <3",
     "icons": [
         {
-            "src": "/icons/app-icon-48x48.png",
+            "src": "/icons/spreadlove_48x48.png",
             "type": "image/png",
             "sizes": "48x48"
         },
         {
-            "src": "/icons/app-icon-96x96.png",
+            "src": "/icons/spreadlove_96x96.png",
             "type": "image/png",
             "sizes": "96x96"
         },
         {
-            "src": "/icons/app-icon-144x144.png",
+            "src": "/icons/spreadlove_144x144.png",
             "type": "image/png",
             "sizes": "144x144"
         },
         {
-            "src": "/icons/app-icon-192x192.png",
+            "src": "/icons/spreadlove_192x192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/icons/app-icon-256x256.png",
+            "src": "/icons/spreadlove_256x256.png",
             "type": "image/png",
             "sizes": "256x256"
         },
         {
-            "src": "/icons/app-icon-384x384.png",
+            "src": "/icons/spreadlove_384x384.png",
             "type": "image/png",
             "sizes": "384x384"
-        },
-        {
-            "src": "/icons/app-icon-512x512.png",
-            "type": "image/png",
-            "sizes": "512x512"
         }
     ] 
 }
