@@ -2,11 +2,17 @@
 <%- include('./includes/header.ejs') %>
 
 
+<!--======================================================================================
+                        BACK 2 TOP BUTTON                                              -->
 <div data-aos="zoom-in-down" id="backtotop">
     <a href="#home">
         <i class="bi bi-arrow-up-square-fill"></i>
     </a>
 </div>
+<!--======================================================================================
+                        PWA BANNER ON BUTTON CLICK                                     -->
+<div role="button" data-aos="zoom-in-down" class="btnPWAShowBanner"><i class="fas fa-comment-medical"></i></div>
+
 
 <!--===========================================================================
                           HERO-SCTION                                       -->
@@ -16,7 +22,7 @@
 
     <!-- TEXT & BTN -->
     <div class="container hero-section">
-        <% if(name) { %>
+        <% if(isLoggedIn) { %>
             <h1 class="display-5 text-dark mt-5 pt-5 mb-4">SpreadLove. <span class="danceFont danceRotate"><%= name %></span>!</h1>
         <% } else { %>
             <h1 class="display-5 text-dark mt-5 pt-5 mb-4">SpreadLove. <span class="danceFont danceRotate">Every</span>ONE</h1>
@@ -73,7 +79,7 @@
 
 <!--===========================================================================
                           SCHWANGERSCHAFT                                   -->
-<section id="pregnant" class="d-relative quotes-bg pb-5">
+<section id="pregnant" class="d-relative pregnacy-bg pb-5">
     <div class="bg-overlay"></div>
     <div class="container">
         <h1>Bilder unserer Schwangerschaft...</h1>
@@ -82,7 +88,7 @@
             <!-- card deck 1 -->
             <div class="card-deck">
                 <div data-aos="zoom-in-up" class="card">
-                    <img src="/img/section preg/preg_3th_month.jpg" alt="pregnent_3months">
+                    <img src="/img/section preg/preg_3th_month.jpg" alt="pregnant_3months">
                     <div class="card-body">
                         <h4 class="card-title">drittes Monat</h4>
                         <p class="card-text">
@@ -95,7 +101,7 @@
                 </div>
 
                 <div data-aos="zoom-in-up" class="card">
-                    <img src="/img/section preg/preg_4th_month.jpg" alt="pregnent_4months">
+                    <img src="/img/section preg/preg_4th_month.jpg" alt="pregnant_4months">
                     <div class="card-body">
                         <h4 class="card-title">viertes Monat</h4>
                         <p class="card-text">
@@ -108,7 +114,7 @@
                 </div>
 
                 <div data-aos="zoom-in-up" class="card">
-                    <img src="/img/section preg/preg_5th_month.jpg" alt="pregnent_5months">
+                    <img src="/img/section preg/preg_5th_month.jpg" alt="pregnant_5months">
                     <div class="card-body">
                         <h4 class="card-title">FÜNF Monate!!</h4>
                         <p class="card-text">
@@ -121,7 +127,7 @@
                 </div>
             
                 <div data-aos="zoom-in-up" class="card">
-                    <img src="/img/section preg/preg_6th_month.jpg" alt="pregnent_6months">
+                    <img src="/img/section preg/preg_6th_month.jpg" alt="pregnant_6months">
                     <div class="card-body">
                         <h4 class="card-title">Sechs Monate</h4>
                         <p class="card-text">
@@ -149,7 +155,7 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">liegt noch vor uns!</small>
+                        <small class="text-muted">picture to come</small>
                     </div>
                 </div>
 
@@ -162,7 +168,7 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">liegt noch vor uns!</small>
+                        <small class="text-muted">picture to come</small>
                     </div>
                 </div>
             
@@ -175,7 +181,7 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">liegt noch vor uns!</small>
+                        <small class="text-muted">picture to come</small>
                     </div>
                 </div>
 
@@ -188,7 +194,7 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">liegt noch vor uns!</small>
+                        <small class="text-muted">picture to come</small>
                     </div>
                 </div>
 
@@ -200,53 +206,61 @@
 </section>
 
 
+
+
 <!--===========================================================================
-                          GALLERIE                                          -->
+                          QUOTES                                            -->
 <section id="quotes" class="d-relative mt-5 pt-5 mb-5 pb-5">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <h1 class="text-center mb-5">Was ich noch sagen wollte...</h1>
-                <div id="gallerie-slider" class="carousel slide text-dark" data-ride="carousel">
+                <div id="quotes-slider" class="carousel slide text-dark" data-ride="carousel">
                     <ol class="carousel-indicators text-dark">
-                        <li data-target="#gallerie-slider" data-slide-to="0" class="active bg-dark mr-2"></li>
-                        <li data-target="#gallerie-slider" data-slide-to="1" class="bg-dark mr-2"></li>
-                        <li data-target="#gallerie-slider" data-slide-to="2" class="bg-dark"></li>
+                        <li data-target="#quotes-slider" data-slide-to="0" class="active bg-dark mr-2"></li>
+                        <li data-target="#quotes-slider" data-slide-to="1" class="bg-dark mr-2"></li>
+                        <li data-target="#quotes-slider" data-slide-to="2" class="bg-dark"></li>
+                        <li data-target="#quotes-slider" data-slide-to="3" class="bg-dark"></li>
                     </ol>
                     <div class="carousel-inner">
+
                         
-                        <div class="carousel-item active">
-                            <div class="col text-center">
-                                <p class="lead text-dark mb-3">
-                                    Meine Ehefrau ist eine Omsn (österr. für Großmutter)
-                                </p>
-                                <p class="text-uppercase text-muted">&mdash; ASW, <em>Site Owner</em></p>
-                            </div>
-                        </div>
+                        <!-- Kommentare aus DB laden -->
+                        <% comments.forEach( comment => { %>
+                            <% if( comment.get().id == comments.length ){ %>
+                                <div class="carousel-item active">
+                            <% } else { %>
+                                <div class="carousel-item">                            
+                            <% } %>
+                                <div class="col text-center">
+                                    <p class="lead text-dark mb-3">
+                                        <%- comment.get().comment %>
+                                    </p>
+                                    <p class="text-uppercase text-muted">&mdash; <%- comment.get().name %></p>
+                                </div>
+                            </div>                        
+                        <% }) %>
 
-                        <div class="carousel-item">
-                            <div class="col text-center">
-                                <p class="lead text-dark mb-3">
-                                    Nach drei Jahren Ehe ist man schon ein altes Ehepaar!
-                                </p>
-                                <p class="text-uppercase text-muted">&mdash; ASW, <em>Site Owner</em></p>
-                            </div>
-                        </div>
 
-                        <div class="carousel-item">
-                            <div class="col text-center">
-                                <p class="lead text-dark mb-3">
-                                    Baby-Googool wird die Kleinheit meiner Frau in geschätzt 5-7 Jahren erreicht haben! Sicher? GANZ SICHER!!
-                                </p>
-                                <p class="text-uppercase text-muted">&mdash; ASW, <em>Site Owner</em></p>
-                            </div>
-                        </div>
+                        <!-- Fehlende Einträge für Slider erzeugen -->
+                        <% while( comments.length < 4 ) { %>
+                            <div class="carousel-item">
+                                <div class="col text-center">
+                                    <p class="lead text-dark mb-3">
+                                        Nach drei Jahren Ehe ist man schon ein altes Ehepaar!
+                                    </p>
+                                    <p class="text-uppercase text-muted">&mdash; ASW, <em><%= comments.length %></em></p>
+                                </div>
+                            </div>                            
+                            <% comments.length = comments.length + 1 %>
+                        <% } %>
+
 
                     </div> <!-- inner carousel -->
 
-                    <a href="#gallerie-slider" role="button" class="carousel-control-prev text-dark"> <i class="fas fa-arrow-left"  aria-hidden="true"></i> </a>
-                    <a href="#gallerie-slider" role="button" class="carousel-control-next text-dark"> <i class="fas fa-arrow-right" aria-hidden="true"></i> </a>
+                    <a href="#quotes-slider" role="button" class="carousel-control-prev text-dark"> <i class="fas fa-arrow-left"  aria-hidden="true"></i> </a>
+                    <a href="#quotes-slider" role="button" class="carousel-control-next text-dark"> <i class="fas fa-arrow-right" aria-hidden="true"></i> </a>
                 </div>
             </div>
         </div>
@@ -254,15 +268,46 @@
 </section>
 
 
+<!--===========================================================================
+                          Lasst Liebe da                                    -->
+<section id="comments" class="d-relative mt-5 pt-5 mb-5 pb-5">
+
+    <div class="container mt-5 pt-5">
+        <h1 class="border-line">Was wollt Ihr uns sagen?</h1>
+        <p class="small text-muted">Die lezten erfassten Kommentare werden oben im Slider angezeigt</p>
+  
+          <form action="/comment" method="POST">
+              <div class="row">
+                  <!-- LINKE SPALTE -->
+                  <div class="col">
+                      <div class="form-group">
+                          <label for="name">Name:</label>
+                          <input type="text" id="name" name="name" class="form-control" placeholder="* please enter your name">
+                      </div>
+                      <div class="form-group">
+                          <label for="email">E-Mail:</label>
+                          <input type="email" id="email" name="email" class="form-control" placeholder="* please enter your email address">
+                      </div>
+                      <div class="form-group">
+                          <label for="textarea">Was willst Du mir sagen?</label>
+                          <textarea name="comment" class="form-control" id="textarea" rows="4"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <input class="btn btn-success" type="submit" name="commit" value="Place comment">
+                          <input type="hidden" name="_csrf" value="<%= csrfToken %>">  <!-- CSRF TOKEN -->
+                      </div>
+                  </div> <!--end col-->
+            </div> <!--end row-->
+        </form> <!--end input form-->
+  
+    </div> <!-- CONTAINER END -->
+  
 
 
 
+</section>
 
-<!-- PWA Banner -->
-<!-- 
-<br><br>
-<button class="btnPWAShowBanner">Installation banner anzeigen</button>
-<br><br><br> -->
+
 
 <!-- FOOTER -->
 <%- include('./includes/footer.ejs') %>

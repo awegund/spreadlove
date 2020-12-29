@@ -12,19 +12,20 @@ const router = express.Router();
  *---------------------------------------------------------------------*/
 
 router
-    .get('/',                               indexController.getIndex)
-    .get('/impressum',                      indexController.getImpressum)
-    .get('/dsgvo',                          indexController.getDSGVO)
-    .get('/3rdparty',                       indexController.get3rdparty)
-    .get('/authentication/login',           authController.getLoginPage)
-    .get('/authentication/getAdminView',    authController.getAdminView)
+    .get('/',                               indexController.getIndex)           //HOME
+    .get('/impressum',                      indexController.getImpressum)       //FOOTER
+    .get('/dsgvo',                          indexController.getDSGVO)           //FOOTER
+    .get('/3rdparty',                       indexController.get3rdparty)        //FOOTER
+    .get('/authentication/login',           authController.getLoginPage)        //Login
+    .get('/authentication/getAdminView',    authController.getAdminView)        
     .get('/authentication/register',        authController.getRegisterPage)
     .get('/authentication/resetPwd',        authController.getResetPWD)
     .get('/authentication/displayAllUsers', authController.getAllUsers);
     // .get('/raspberry/:function',         isAuthenticated,                xxxx);  //muss erst implementiert werden
-
-
+    
+    
 router
+    .post('/comment',                       indexController.postComment)        //Kommentar erfassen und speichern
     .post('/authentication/login',          authController.postLogin)
     .post('/authentication/registerUser',   authController.postRegisterUser);
 

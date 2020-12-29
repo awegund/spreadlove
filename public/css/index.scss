@@ -82,10 +82,8 @@ body, p {
 
     #backtotop{
         position: fixed;
-        width: 1.4rem;
-        height: 1.4rem;
-        bottom: 3.6rem;
-        right: 1rem;
+        bottom: 3rem;
+        right: 3rem;
         z-index: 9999;
         
         a{
@@ -95,6 +93,16 @@ body, p {
             text-shadow: 0 0 20px gray;
         }
         
+    }
+
+    .btnPWAShowBanner {
+        position: fixed;
+        bottom: 2.6rem;
+        right: 5rem;
+        font-size: xx-large;
+        z-index: 9999;
+        color: #bd45a3;
+        text-shadow: 0 0 20px gray;
     }
 }
 
@@ -244,16 +252,17 @@ button .navbar-toggler {
 }
 
 
-/*========================= QUOTES =========================*/
-.quotes-bg{
+/*========================= Pregnancy =========================*/
+.pregnacy-bg{
     background: url('/img/gh_kampl_styria.jpg') 60% 3rem fixed no-repeat;
     height: 100%;
     width: 100%;
     background-size: cover;
 }
 
-#quotes .rounded-circle{
-    border: 5px solid rgb(83, 82, 82);
+#pregnant h1{
+    position: relative;
+    z-index: 9999;
 }
 
 .card-deck .card{
@@ -272,7 +281,7 @@ button .navbar-toggler {
 
 
 
-/*========================= GALLERY =========================*/
+/*========================= Quotes =========================*/
 #quotes{
     width: 100%;
     height: 30vh;
@@ -312,6 +321,14 @@ button .navbar-toggler {
 
 #gallerie-slider .carousel-indicators li{
     max-width: 3rem;
+}
+
+
+
+/*========================= COMMENTS =========================*/
+#comments {
+    width: 100%;
+    background-color: rgba(240,240,240,0.6);
 }
 
 

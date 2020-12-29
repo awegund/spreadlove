@@ -8,6 +8,7 @@ $(window).on('scroll', function() {
         $('nav.navbar').removeClass('pt-3');
         $('nav.navbar').removeClass('pb-5');
         $('#backtotop').css('visibility', 'visible');
+        $('.btnPWAShowBanner').css('visibility', 'visible');
     } else {
         //Bildanfang und Collapse sichtbar = Hintergrund weiß
         if($(window).width() <= 992 ){
@@ -44,6 +45,7 @@ window.onload = function() {
         $('nav.navbar').removeClass('pb-5');    
     }
     $('#backtotop').css('visibility', 'hidden');
+    $('.btnPWAShowBanner').css('visibility', 'hidden');
 
 
     //Initialize animated Scroll libary
