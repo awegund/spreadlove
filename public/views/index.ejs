@@ -227,8 +227,8 @@
 
                         
                         <!-- Kommentare für Slider aus DB laden -->
-                        <% comments.forEach( comment => { %>
-                            <% if( comment.get().id == comments.length ){ %>
+                        <% comments.forEach( (comment, index) => { %>
+                            <% if( index == 0 ){ %>
                                 <div class="carousel-item active">
                             <% } else { %>
                                 <div class="carousel-item">                            
@@ -273,7 +273,7 @@
 <section id="comments" class="d-relative mt-5 pt-5 mb-5 pb-5">
 
     <div class="container mt-5 pt-5">
-        <h1 class="border-line">Schreibt uns was und lasst Liebe da!</h1>
+        <h1 class="border-line">Schreibt uns etwas - lasst Liebe da!</h1>
         <p class="small text-muted">
             Die lezten erfassten Kommentare werden oberhalb im Slider angezeigt.
             Bitte beachte, dass nur ein Eintrag pro Tag erfasst werden kann. 

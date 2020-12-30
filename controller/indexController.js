@@ -1,7 +1,4 @@
 const Comments = require('../models/commentModel');
-const bcrypt   = require('bcryptjs');
-const { Sequelize } = require('../models/establishPostgreConnection');
-const { sequelize } = require('../models/commentModel');
 const { Op } = require("sequelize");
 /*-------------------------------------------------------------------------*/
 
@@ -14,7 +11,6 @@ exports.getIndex = (req, res) => {
     Comments.findAll({  order: [ [ 'createdAt', 'DESC' ] ],
                         limit: 4 })
             .then(comments => {
-                //Site Rendern
                 res.status(200);
                 res.render('index', {
                     name:     req.session.name || '',
