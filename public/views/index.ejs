@@ -226,7 +226,7 @@
                     <div class="carousel-inner">
 
                         
-                        <!-- Kommentare aus DB laden -->
+                        <!-- Kommentare für Slider aus DB laden -->
                         <% comments.forEach( comment => { %>
                             <% if( comment.get().id == comments.length ){ %>
                                 <div class="carousel-item active">
@@ -243,7 +243,7 @@
                         <% }) %>
 
 
-                        <!-- Fehlende Einträge für Slider erzeugen -->
+                        <!-- Fehlende Carousel-Items für Slider erzeugen -->
                         <% while( comments.length < 4 ) { %>
                             <div class="carousel-item">
                                 <div class="col text-center">
@@ -273,8 +273,11 @@
 <section id="comments" class="d-relative mt-5 pt-5 mb-5 pb-5">
 
     <div class="container mt-5 pt-5">
-        <h1 class="border-line">Was wollt Ihr uns sagen?</h1>
-        <p class="small text-muted">Die lezten erfassten Kommentare werden oben im Slider angezeigt</p>
+        <h1 class="border-line">Schreibt uns was und lasst Liebe da!</h1>
+        <p class="small text-muted">
+            Die lezten erfassten Kommentare werden oberhalb im Slider angezeigt.
+
+        </p>
   
           <form action="/comment" method="POST">
               <div class="row">
@@ -301,11 +304,37 @@
         </form> <!--end input form-->
   
     </div> <!-- CONTAINER END -->
-  
+  </section>
 
 
 
-</section>
+
+<!--===========================================================================
+                          SCHWANGERSCHAFT                                   -->
+                          <section id="pregnant" class="d-relative pregnacy-bg pb-5">
+                            <div class="bg-overlay"></div>
+                            <div class="container">
+                                <h1>Bilder unserer Schwangerschaft...</h1>
+                                <div class="row justify-content-center mb-5">
+                        
+                                    <!-- card deck 1 -->
+                                    <div class="card-deck">
+                                        <div data-aos="zoom-in-up" class="card">
+                                            <img src="/img/section preg/preg_3th_month.jpg" alt="pregnant_3months">
+                                            <div class="card-body">
+                                                <h4 class="card-title">drittes Monat</h4>
+                                                <p class="card-text">
+                                                    dieses Foto wurde im dritten Schwangerschaftsmonat aufgenommen
+                                                </p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <small class="text-muted">3 months</small>
+                                            </div>
+                                        </div>
+                        
+
+
+
 
 
 

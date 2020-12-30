@@ -11,13 +11,15 @@ let redis         = require('redis');
 /*---------------------------------------------------------------------*/
 let sequelize        = require('./models/establishPostgreConnection');
 /*---------------------------------------------------------------------*/
-let publicRoutes     = require('./routes/indexRoutes');
-let errorController  = require('./controller/errorController');
-/*---------------------------------------------------------------------*/
 let csrf             = require('csurf');    //Cross Site Request Forgeing Protection
 const csrfProtection = csrf();
 /*---------------------------------------------------------------------*/
 const flash          = require('connect-flash');   //Info-Error-Warning Handling via Session
+/*---------------------------------------------------------------------*/
+const requestIp      = require('request-ip');
+/*---------------------------------------------------------------------*/
+let publicRoutes     = require('./routes/indexRoutes');
+let errorController  = require('./controller/errorController');
 /*---------------------------------------------------------------------*/
 
 
@@ -44,14 +46,18 @@ app.set('views', path.join(__dirname, 'public', 'views'));
 
 
 /*----------------------------------------*
- *       PARSERS & FAVICON                *
+ *       MW REGISTRATIONS                 *
  *----------------------------------------*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // FavIcon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+// Remote IP-Address
+app.use(requestIp.mw());
 
 // REDIS Session Store
 app.use(session({
@@ -60,15 +66,16 @@ app.use(session({
     resave:             false,
     saveUninitialized:  false,
     // cookie: {
-    //     maxAge: 3600
-    // },
-    store:              RedisStore
-}));
+        //     maxAge: 3600
+        // },
+        store:              RedisStore
+    }));
+    
+    // CSRF Protection (AFTER Session!)
+    app.use(csrfProtection);       // for all POST-Requests a CSRF-Token MUST be existing!
+    // FLASH: Cross-Site Info/Warning/Error (AFTER Session!)
+    app.use(flash());
 
-// CSRF Protection (AFTER Session!)
-app.use(csrfProtection);       // for all POST-Requests a CSRF-Token MUST be existing!
-// FLASH: Cross-Site Info/Warning/Error (AFTER Session!)
-app.use(flash());
 
 
 /*---------------------------------------------------------------------*
@@ -79,8 +86,16 @@ app.use(flash());
     // Locals that are available in the Views only
     res.locals.isLoggedIn = req.session.isLoggedIn;
     res.locals.csrfToken  = req.csrfToken();
+    res.locals.remoteIP   = req.clientIp;
+    
     next();
 });
+
+// remote IP Address 
+app.use( (req, res, next) => {
+    req.session.remoteIP = req.clientIp;  
+    next();
+})
 
 
 /*---------------------------------------------------------------------*

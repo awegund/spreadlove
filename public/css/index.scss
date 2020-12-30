@@ -104,6 +104,11 @@ body, p {
         color: #bd45a3;
         text-shadow: 0 0 20px gray;
     }
+
+    .errorMessage{
+        color: #bd45a3;
+    }
+
 }
 
 
@@ -247,7 +252,7 @@ button .navbar-toggler {
     position: absolute;
     overflow: hidden;
     right: 0;
-    top: -5rem;
+    top: 0;
     width: 100%;
 }
 

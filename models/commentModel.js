@@ -10,6 +10,7 @@ const Comments = sequelize.define('commentModel', {
         allowNull: false,
         primaryKey: true
     },
+    ipAddress: Sequelize.STRING,
     name: Sequelize.STRING,
     email: {
         type: Sequelize.STRING,
