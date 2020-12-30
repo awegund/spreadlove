@@ -86,12 +86,10 @@ app.use(session({
     // Locals that are available in the Views only
     res.locals.isLoggedIn = req.session.isLoggedIn;
     res.locals.csrfToken  = req.csrfToken();
-    res.locals.remoteIP   = req.clientIp;
-    
     next();
 });
 
-// remote IP Address 
+// Session --> save remote IP Address 
 app.use( (req, res, next) => {
     req.session.remoteIP = req.clientIp;  
     next();
