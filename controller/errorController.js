@@ -9,5 +9,6 @@ exports.get404Page = (req, res, next) => {
     }
     //Render Error Page
     res.status(404).render('404', {
-        message: message });
+        message: message 
+    });
 };

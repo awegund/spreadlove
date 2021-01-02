@@ -1,17 +1,12 @@
 //const session = require("express-session");
 const User     = require('../models/userModel');
-const dbAdmin  = require('../models/db_admin');
+const dbHandling  = require('../models/dbHandling');
 const bcrypt   = require('bcryptjs');
 const crypto   = require('crypto');
-const { resolve } = require('path');
 /*---------------------------------------------------------------------*/
-
 
  
 
-/*-----------------------------------------------*
- *                  LOGIN
- *-----------------------------------------------*/
 exports.getLoginPage = (req, res) => { 
     res.status(200);
     res.render('authentication/login', {
@@ -21,7 +16,6 @@ exports.getLoginPage = (req, res) => {
     }); 
 }
 
-
 exports.getRegisterPage = (req, res) => { 
     res.status(200);
     res.render('authentication/register', {
@@ -30,19 +24,27 @@ exports.getRegisterPage = (req, res) => {
     }); 
 }
 
-
 exports.postLogin = (req, res) => {
     User.findOne({ where: { email: req.body.email }})
         .then(UserModel => {
             let user = UserModel.get();
-            console.log(user.password);
-
             if(bcrypt.compareSync(req.body.password, user.password)) {
-                //Redirect
+                //Cross-Site Messages
+                let message = 'Du hast Dich erfolgreich angemeldet!';
+                // Session mit Info versorgen
+                req.session.isLoggedIn = true;
+                // Seite anzeigen
                 res.status(200);
-                res.redirect('/authentication/getAdminView');                    
+                res.render('authentication/database/adminView',{
+                    message: message
+                });                    
             } else {
-                console.log(err);
+                console.log('Error: ', err);
+                //Cross-Site Message mit Session weiterreichen 
+                req.flash('message', 'E-Mail or password nicht korrekt!');
+                //Redirect
+                res.status(400);
+                res.redirect('/');
             }
 
         })
@@ -55,7 +57,6 @@ exports.postLogin = (req, res) => {
             res.redirect('/');
         })
 }
-
 
 exports.postRegisterUser = (req, res) =>{
     let hashPWD = bcrypt.hashSync(req.body.password, 12);
@@ -77,13 +78,12 @@ exports.postRegisterUser = (req, res) =>{
         }
         //Redirect
         res.status(200);
-        res.redirect('/authentication/displayAllUsers');
+        res.redirect('/authentication/database/adminView');
     
     }).catch(err => {
         console.log('Fehler aufgetreten: ' + err);
     });
 }
-
 
 exports.getResetPWD = (req, res) => { 
     res.status(200);
@@ -96,7 +96,7 @@ exports.postResetPWD = (req, res, next) => {
     crypto.randomBytes(32, (err, buff) => {
         if(err){
             console.log(err);
-            res.redirect('/authentication/resetPwd');
+            res.redirect('authentication/resetPwd');
         }
         const token = buff.toString('hex');
         User
@@ -118,10 +118,6 @@ exports.postResetPWD = (req, res, next) => {
     
 }
 
-
-/*-----------------------------------------------*
- *                  ADMIN
- *-----------------------------------------------*/
 exports.getAllUsers = (req, res) => {
     // Daten in DB speichern
     User.findAll({ where: { locked: false }})
@@ -142,9 +138,8 @@ exports.getAllUsers = (req, res) => {
         });
 };
 
-
-exports.getAdminView = (req, res) => {
-    dbAdmin.dbTables
+exports.getdbHandlingView = (req, res) => {
+    dbHandling.dbTables
            .then(tables => {
 
                 if(!tables){
@@ -154,13 +149,10 @@ exports.getAdminView = (req, res) => {
                     res.status(400);
                     res.redirect('/');
                 }
-                dbAdmin.colAttributes(tables[0])
+                dbHandling.colAttributes(tables[0])
                        .then(tableAttributes => {
-
-                            console.log('Attribs: --->>>> ', tableAttributes);
-
                             res.status(200);
-                            res.render('authentication/database/database_admin', {
+                            res.render('authentication/database/tableAdmin', {
                                 tables: tables,
                                 tableAttributes: tableAttributes
                             }); 

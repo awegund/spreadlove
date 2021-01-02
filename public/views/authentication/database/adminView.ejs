@@ -1,0 +1,96 @@
+<!-- HEADER -->
+<%- include('../../includes/header.ejs') %>
+
+<!-- MAIN WINDOW AREA -->
+<section>    
+  <div class="container mt-5 pt-5">
+        <h1>Admin Desktop:</h1>
+        <!-- Row -->
+        <div class="row">
+            <!-- START COL TABLES -->
+            <div class="card-columns">
+
+                <!-- TABLE DEFINITIONs -->
+                <div class="card bg-light">
+                    <form action="/authentication/getDBAdminView" method="GET">
+                        <div class="card-img-top">
+                            <div class="card-body">
+                                <div class="card-title text-dark">Table denfitions</div>
+                                <input class="btn btn-round" type="submit" value="Anzeigen Tabellen mit Attributen">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- ENDE TABLE DEFINITIONS -->
+
+                <!-- TABLE USER VERWALTUNG -->
+                <div class="card bg-light">
+                    <form action="/authentication/displayAllUsers" method="GET">
+                        <div class="card-img-top">
+                            <div class="card-body">
+                                <div class="card-title text-dark">User anzeigen</div>
+                                <input class="btn btn-round" type="submit" value="Alle registrierten User anzeigen">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- ENDE USER VERWALTUNG -->
+
+                <!-- TABLE RASPBERRY -->
+                <div class="card bg-light">
+                    <form action="/authentication/displayAllUsers" method="GET">
+                        <div class="card-img-top">
+                            <div class="card-body">
+                                <div class="card-title text-dark">User anzeigen</div>
+                                <input class="btn btn-round" type="submit" value="Alle registrierten User anzeigen">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- ENDE RASPBERRY -->
+
+            </div>
+            <!-- ENDE CARD-COLUMNS -->
+        </div> 
+        <!-- ENDE ROW -->
+    </div>
+    <!-- CONTAINER END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="form-group">
+    <input class="btn btn-success" type="submit" name="commit" value="Register">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">  
+    </div> -->
+            
+  
+
+<!-- FOOTER -->
+<%- include('../../includes/footer.ejs') %>

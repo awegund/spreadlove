@@ -47,12 +47,14 @@ window.onload = function() {
     $('#backtotop').css('visibility', 'hidden');
     $('.btnPWAShowBanner').css('visibility', 'hidden');
 
-
-    //Initialize animated Scroll libary
+        //Initialize animated Scroll libary
     AOS.init({  duration: 1800 });
 }
 
-
+//Test, ob Msg-Window sich dann ausblendet!??
+window.setTimeout(event => {
+    $('#messageBox').css('visibility', 'hidden');
+}, 5000);
 
 
 /*-------------------------------------------------------------*

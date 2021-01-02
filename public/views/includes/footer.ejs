@@ -17,6 +17,12 @@
                             Drittanbieter
                         </a>
                     </div>
+                    <div class="col <%= !isLoggedIn ? 'showLogin' : 'hideLogin' %>"">
+                        <a href="/authentication/login-fb" class="text-dark text-justify-center" rel="Login">Login Facebook</a>
+                    </div>
+                    <div class="col <%= !isLoggedIn ? 'showLogin' : 'hideLogin' %>"">
+                        <a href="/authentication/login-github" class="text-dark text-justify-center" rel="Login">Login GitHub</a>
+                    </div>
                 </div>
             </div>
         </footer>

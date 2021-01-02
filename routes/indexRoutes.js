@@ -1,35 +1,37 @@
-const express = require('express');
-const indexController = require('../controller/indexController');
-const authController = require('../controller/authController');
-const isAuthenticated = require('../authMiddleware/is-auth');
+const express           = require('express');
+const indexController   = require('../controller/indexController');
+const authController    = require('../controller/authController');
+const passport          = require('passport');
+// const isAuthenticated = require('../authMiddleware/is-auth');
 /*---------------------------------------------------------------------*/
 
 
 const router = express.Router();
-
-/*---------------------------------------------------------------------*
- *                         ROUTES                                      * 
- *---------------------------------------------------------------------*/
 
 router
     .get('/',                               indexController.getIndex)           //HOME
     .get('/impressum',                      indexController.getImpressum)       //FOOTER
     .get('/dsgvo',                          indexController.getDSGVO)           //FOOTER
     .get('/3rdparty',                       indexController.get3rdparty)        //FOOTER
-    .get('/authentication/login',           authController.getLoginPage)        //Login
-    .get('/authentication/getAdminView',    authController.getAdminView)        
+    // .get('/authentication/login',           authController.getLoginPage)        //Login
+    .get('/authentication/login-github',    passport.authenticate('github'))
+    .get('/authentication/auth-github',     passport.authenticate('github', { successRedirect: '/',
+                                                                              failureRedirect: '/authentication/login-github' }))
+    .get('/authentication/login-fb',        passport.authenticate('facebook'))
+    .get('/authentication/auth-fb',         passport.authenticate('facebook', { failureRedirect: '/authentication/login-fb' }),
+                                                                                    function(req, res) {
+                                                                                        // Successful authentication, redirect home
+                                                                                        res.redirect('/');
+                                                                                    })
+    .get('/authentication/getDBAdminView',  authController.getdbHandlingView)        
     .get('/authentication/register',        authController.getRegisterPage)
     .get('/authentication/resetPwd',        authController.getResetPWD)
-    .get('/authentication/displayAllUsers', authController.getAllUsers);
-    // .get('/raspberry/:function',         isAuthenticated,                xxxx);  //muss erst implementiert werden
+    .get('/authentication/displayAllUsers', authController.getAllUsers)
+    // .get('/raspberry/:id',                  );  //muss erst implementiert werden
     
-    
-router
     .post('/comment',                       indexController.postComment)        //Kommentar erfassen und speichern
     .post('/authentication/login',          authController.postLogin)
     .post('/authentication/registerUser',   authController.postRegisterUser);
 
-/*---------------------------------------------------------------------*
- *                         EXPORT                                      * 
- *---------------------------------------------------------------------*/
+    
 module.exports = router;

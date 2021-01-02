@@ -9,9 +9,25 @@
         <i class="bi bi-arrow-up-square-fill"></i>
     </a>
 </div>
+
 <!--======================================================================================
                         PWA BANNER ON BUTTON CLICK                                     -->
 <div role="button" data-aos="zoom-in-down" class="btnPWAShowBanner"><i class="fas fa-comment-medical"></i></div>
+
+
+<!--======================================================================================
+                        MESSAGE ANZEIGEN                                               -->
+<% if(message) { %>
+<div id="messageBox" class="container d-relative">
+    <div class="row justify-content-center align-content-center">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center messagebox">
+            <%= message %>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<% } %>
 
 
 <!--===========================================================================
@@ -77,9 +93,58 @@
 </section>
 
 
+
+<!--===========================================================================
+                          News                                              -->
+<section class="d-relative news-bg mb-5 pb-5">
+<div class="bg-overlay"></div>
+<div class="container">
+    <h1 id="news" class="mt-5 pt-5">News Bereich</h1>
+
+    <!-- Anzeige links -->
+    <div class="row justify-content-start mb-2 pb-2">
+        <div class="col-lg-9">
+            <div class="row bg-light text-dark">
+                <div class="col-lg-3">
+                    <img class="news-images" src="/img/section_news/silvester_2021_alicia.jpg" alt="News section">
+                </div>
+                <div class="col">
+                    <h5 class="text-center bg-light">Frohes neues Jahr 2021</h5>
+                    <hr>
+                    <p class="text-center bg-light text-dark">
+                        Wir wünschen Euch ein frohes neues Jahr und hoffen, dass dieses Jahr einfach nur super wird!  
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Anzeige rechts -->
+    <div class="row justify-content-end mb-2 pb-2">
+        <div class="col-lg-9">
+            <div class="row bg-light text-dark">
+                <div class="col">
+                    <h5 class="text-center bg-light">2021 wir <span style="text-decoration: line-through;">zwei</span> - ähhh, ich wollte sagen: wir DREI!! kommen!</h5>
+                    <hr>
+                    <p class="text-center bg-light text-dark">
+                        So viele negative Momente dieses vergangene Jahr 2020 auch für viele bedeutet haben mag. Wir blicken hoffnungsvoll und voller Freude ins nächste jahr! 
+                    </p>
+                </div>
+                <div class="col-lg-3">
+                    <img class="news-images" src="/img/section_news/silvester_2021.jpg" alt="News section">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+</section>
+
 <!--===========================================================================
                           SCHWANGERSCHAFT                                   -->
-<section id="pregnant" class="d-relative pregnacy-bg pb-5">
+<section id="pregnant" class="d-relative pregnacy-bg pb-5 mb-5">
     <div class="bg-overlay"></div>
     <div class="container">
         <h1>Bilder unserer Schwangerschaft...</h1>
@@ -88,7 +153,7 @@
             <!-- card deck 1 -->
             <div class="card-deck">
                 <div data-aos="zoom-in-up" class="card">
-                    <img src="/img/section preg/preg_3th_month.jpg" alt="pregnant_3months">
+                    <img src="/img/section_preg/preg_3th_month.jpg" alt="pregnant_3months">
                     <div class="card-body">
                         <h4 class="card-title">drittes Monat</h4>
                         <p class="card-text">
@@ -101,7 +166,7 @@
                 </div>
 
                 <div data-aos="zoom-in-up" class="card">
-                    <img src="/img/section preg/preg_4th_month.jpg" alt="pregnant_4months">
+                    <img src="/img/section_preg/preg_4th_month.jpg" alt="pregnant_4months">
                     <div class="card-body">
                         <h4 class="card-title">viertes Monat</h4>
                         <p class="card-text">
@@ -114,7 +179,7 @@
                 </div>
 
                 <div data-aos="zoom-in-up" class="card">
-                    <img src="/img/section preg/preg_5th_month.jpg" alt="pregnant_5months">
+                    <img src="/img/section_preg/preg_5th_month.jpg" alt="pregnant_5months">
                     <div class="card-body">
                         <h4 class="card-title">FÜNF Monate!!</h4>
                         <p class="card-text">
@@ -127,7 +192,7 @@
                 </div>
             
                 <div data-aos="zoom-in-up" class="card">
-                    <img src="/img/section preg/preg_6th_month.jpg" alt="pregnant_6months">
+                    <img src="/img/section_preg/preg_6th_month.jpg" alt="pregnant_6months">
                     <div class="card-body">
                         <h4 class="card-title">Sechs Monate</h4>
                         <p class="card-text">
@@ -147,7 +212,7 @@
             <div class="card-deck">
 
                 <div data-aos="zoom-out-down" class="card">
-                    <img src="/img/section preg/preg_placeholder.jpg" alt="placeholder">
+                    <img src="/img/section_preg/preg_placeholder.jpg" alt="placeholder">
                     <div class="card-body">
                         <h4 class="card-title">more to come...</h4>
                         <p class="card-text">
@@ -160,7 +225,7 @@
                 </div>
 
                 <div data-aos="zoom-out-down" class="card">
-                    <img src="/img/section preg/preg_placeholder.jpg" alt="placeholder">
+                    <img src="/img/section_preg/preg_placeholder.jpg" alt="placeholder">
                     <div class="card-body">
                         <h4 class="card-title">more to come...</h4>
                         <p class="card-text">
@@ -173,7 +238,7 @@
                 </div>
             
                 <div data-aos="zoom-out-down" class="card">
-                    <img src="/img/section preg/preg_placeholder2.jpg" alt="placeholder">
+                    <img src="/img/section_preg/preg_placeholder2.jpg" alt="placeholder">
                     <div class="card-body">
                         <h4 class="card-title">more to come...</h4>
                         <p class="card-text">
@@ -186,7 +251,7 @@
                 </div>
 
                 <div data-aos="zoom-out-down" class="card">
-                    <img src="/img/section preg/preg_placeholder2.jpg" alt="placeholder">
+                    <img src="/img/section_preg/preg_placeholder2.jpg" alt="placeholder">
                     <div class="card-body">
                         <h4 class="card-title">more to come...</h4>
                         <p class="card-text">
@@ -305,37 +370,8 @@
         </form> <!--end input form-->
   
     </div> <!-- CONTAINER END -->
-  </section>
-
-
-
-
-<!--===========================================================================
-                          SCHWANGERSCHAFT                                   -->
-                          <section id="pregnant" class="d-relative pregnacy-bg pb-5">
-                            <div class="bg-overlay"></div>
-                            <div class="container">
-                                <h1>Bilder unserer Schwangerschaft...</h1>
-                                <div class="row justify-content-center mb-5">
+</section>
                         
-                                    <!-- card deck 1 -->
-                                    <div class="card-deck">
-                                        <div data-aos="zoom-in-up" class="card">
-                                            <img src="/img/section preg/preg_3th_month.jpg" alt="pregnant_3months">
-                                            <div class="card-body">
-                                                <h4 class="card-title">drittes Monat</h4>
-                                                <p class="card-text">
-                                                    dieses Foto wurde im dritten Schwangerschaftsmonat aufgenommen
-                                                </p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <small class="text-muted">3 months</small>
-                                            </div>
-                                        </div>
-                        
-
-
-
 
 
 

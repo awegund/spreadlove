@@ -1,5 +1,5 @@
 const Comments = require('../models/commentModel');
-const { Op } = require("sequelize");
+const { Op }   = require("sequelize");
 /*-------------------------------------------------------------------------*/
 
 
@@ -7,13 +7,15 @@ const { Op } = require("sequelize");
 exports.getIndex = (req, res) => {
     //Cross-Site Messages
     let message = req.flash('message')[0];
+    let userName = '';
+    if(req.user){ userName = req.user.displayName; }
 
     Comments.findAll({  order: [ [ 'createdAt', 'DESC' ] ],
                         limit: 4 })
             .then(comments => {
                 res.status(200);
                 res.render('index', {
-                    name:     req.session.name || '',
+                    name:     userName || '',
                     message:  message,
                     comments: comments      
                 }); 
@@ -46,7 +48,7 @@ exports.postComment = (req, res) => {
                             if(result) {
                                 console.log(`${req.session.remoteIP} hat bereits einen Slider-Eintrag angelegt am ${result.get().createdAt}`);
                                     //Cross-Site Message mit Session weiterreichen 
-                                    req.flash('message', 'Es tut mir leid, aber mehr als eine Nachricht pro Tag ist nicht möglich!');
+                                    req.flash('message', 'Es tut mir leid, aber Du kannst nur eine Nachricht pro Tag erfassen!');
                                     //Redirect
                                     res.status(400);
                                     res.redirect('/#quotes');
@@ -81,7 +83,6 @@ exports.postComment = (req, res) => {
                         })
 }
 
-
 exports.getImpressum = (req, res) => {
 
     //Cross-Site Messages
@@ -94,7 +95,6 @@ exports.getImpressum = (req, res) => {
     }); 
 }
 
-
 exports.getDSGVO = (req, res) => {
 
     //Cross-Site Messages
@@ -106,7 +106,6 @@ exports.getDSGVO = (req, res) => {
         message: message
     }); 
 }  
-
 
 exports.get3rdparty = (req, res) => {
 

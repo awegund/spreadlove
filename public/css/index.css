@@ -146,6 +146,19 @@ body .errorMessage, p .errorMessage {
   color: #bd45a3;
 }
 
+body .messagebox, p .messagebox {
+  position: fixed;
+  z-index: 9999;
+  width: 80%;
+  height: 20rem;
+  bottom: 12rem;
+  background-color: #fafafa;
+  border: 4px solid #bd45a3;
+  visibility: visible;
+  -webkit-transition: 1s all;
+  transition: 1s all;
+}
+
 /*========================= NAVIGATION =========================*/
 nav {
   -webkit-transition: 1.4s ease-in-out;
@@ -295,6 +308,24 @@ button .navbar-toggler {
   width: 100%;
 }
 
+/*========================= NEWS =============================*/
+.news-bg {
+  background: url("/img/section_news/silvester_2021_terrasse.jpg") 60% 10rem fixed no-repeat;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+
+#news {
+  position: relative;
+  z-index: 9999;
+}
+
+.news-images {
+  position: relative;
+  max-width: 100%;
+}
+
 /*========================= Pregnancy =========================*/
 .pregnacy-bg {
   background: url("/img/gh_kampl_styria.jpg") 60% 3rem fixed no-repeat;
@@ -327,10 +358,10 @@ button .navbar-toggler {
 /*========================= Quotes =========================*/
 #quotes {
   width: 100%;
-  height: 30vh;
+  height: 50vh;
   margin: 0;
   padding: 0;
-  background: url("/img/kleine_kanzel_2020_2.jpg") 50% 6rem fixed no-repeat;
+  background: url("/img/kleine_kanzel_2020_2.jpg") 50% -15rem fixed no-repeat;
   background-size: cover;
   /* Medium devices (landscape tablets, 768px and up) */
 }
@@ -341,7 +372,7 @@ button .navbar-toggler {
     height: 30vh;
     margin: 0;
     padding: 0;
-    background: url("/img/kleine_kanzel_2020_2.jpg") 66% 13rem fixed no-repeat;
+    background: url("/img/kleine_kanzel_2020_2.jpg") 66% -10rem fixed no-repeat;
     background-size: cover;
   }
 }
