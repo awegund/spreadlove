@@ -80,7 +80,7 @@ app.use(passport.session());
 passport.use(new GitHubStrategy({
         clientID:     process.env.GITHUB_CLIENTID,
         clientSecret: process.env.GITHUB_SECURE,
-        callbackURL:  process.env.OAUTH_CB_URLL+'-github'
+        callbackURL:  process.env.OAUTH_CB_URL+'-github'
     },
     function(accessToken, refreshToken, profile, cb) {
         // console.log(profile);
