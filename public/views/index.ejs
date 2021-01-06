@@ -62,6 +62,7 @@
             <!-- START LEFT COLUMN -->
             <div class="col-lg-6 mr-5 text-center">
                 <h1 class="mb-4">About us...</h1>
+                <hr>
                 <p>Meine Frau, Alicia, und ich haben uns 2013 in einem Fitnessstudio in Wien kennen gelernt! 
                     Nachdem wir Anfang 2014 auch ein Paar geworden sind, war für mich nach wenigen Wochen klar:
                     <br><span style="font-weight: bold">diese Frau will ich heiraten!</span>
@@ -96,51 +97,75 @@
 
 <!--===========================================================================
                           News                                              -->
-<section class="d-relative news-bg mb-5 pb-5">
-<div class="bg-overlay"></div>
-<div class="container">
-    <h1 id="news" class="mt-5 pt-5">News Bereich</h1>
+<div id="news_section" class="d-relative bg-white">   <!-- news-bg -->
+    <!-- <div class="bg-overlay"></div> -->
+    <div class="container">
+        <h1 id="news">News Bereich</h1>
+        <hr>
 
-    <!-- Anzeige links -->
-    <div class="row justify-content-start mb-2 pb-2">
-        <div class="col-lg-9">
-            <div class="row bg-light text-dark">
-                <div class="col-lg-3">
-                    <img class="news-images" src="/img/section_news/silvester_2021_alicia.jpg" alt="News section">
+        <!-- NEWS-Articles -->
+        <% newsArticles.forEach( (article, index) => { %>
+            <% if( (index % 2) == 0 ){ %>
+                <div class="row justify-content-start m-2 p-2">
+            <% } else { %>
+                <div class="row justify-content-end m-2 p-2">
+            <% } %>
+
+                    <div data-aos="zoom-in-up" class="col-lg-9">
+                        <div class="row bg-light text-dark articleLine p-1">
+                            <div class="col-lg-3">
+                                <img class="news-images border border-dark" src="/img/section_news/silvester_2021_alicia.jpg" alt="News section">
+                            </div>
+                            <div class="col p-4">
+                                <h5 class="text-center bg-light"><%- article.newsHeader %></h5>
+                                <hr>
+                                <p class="text-center bg-light text-dark">
+                                    <%- article.newsText %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col">
-                    <h5 class="text-center bg-light">Frohes neues Jahr 2021</h5>
-                    <hr>
-                    <p class="text-center bg-light text-dark">
-                        Wir wünschen Euch ein frohes neues Jahr und hoffen, dass dieses Jahr einfach nur super wird!  
-                    </p>
-                </div>
-            </div>
-        </div>
+
+        <% }) %>
+
     </div>
-
-
-    <!-- Anzeige rechts -->
-    <div class="row justify-content-end mb-2 pb-2">
-        <div class="col-lg-9">
-            <div class="row bg-light text-dark">
-                <div class="col">
-                    <h5 class="text-center bg-light">2021 wir <span style="text-decoration: line-through;">zwei</span> - ähhh, ich wollte sagen: wir DREI!! kommen!</h5>
-                    <hr>
-                    <p class="text-center bg-light text-dark">
-                        So viele negative Momente dieses vergangene Jahr 2020 auch für viele bedeutet haben mag. Wir blicken hoffnungsvoll und voller Freude ins nächste jahr! 
-                    </p>
-                </div>
-                <div class="col-lg-3">
-                    <img class="news-images" src="/img/section_news/silvester_2021.jpg" alt="News section">
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
 </div>
+
+
+<!--===========================================================================
+                          News Artikel posten                               -->
+<section id="post_newsArticle" class="d-relative mt-5 pt-5 mb-5 pb-5">
+    <div class="container">
+        <h1 id="news">Neuen Artikel erfassen:</h1>
+        <div class="row">
+            <div class="col-md-8">
+                <form action="/addNewsArticle" method="POST" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="newsHeader">News Header</label>
+                        <input type="text" name="newsHeader" class="form-control" id="newsHeader">
+                    </div>
+                    <div class="form-group">
+                        <label for="newsText">News Text</label>
+                        <textarea name="newsText" class="form-control" id="newsText" rows="2"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="newsPic">Bitte wähle ein Bild für Deinen Artikel aus</label>
+                        <input id="newsPic" type="file" name="newsPic" style="width:100%" class="btn btn-outline-dark btn-round btn-light"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-outline-dark btn-round btn-light" type="submit" value="Artikel posten">
+                        <input type="hidden" width="100%" name="_csrf" value="<%= csrfToken %>">  <!-- CSRF TOKEN -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
+
 
 <!--===========================================================================
                           SCHWANGERSCHAFT                                   -->
@@ -338,7 +363,7 @@
 <section id="comments" class="d-relative mt-5 pt-5 mb-5 pb-5">
 
     <div class="container mt-5 pt-5">
-        <h1 class="border-line">Schreibt uns etwas - lasst Liebe da!</h1>
+        <h1 class="border-line">Schreibt uns etwas und lasst Liebe da!</h1>
         <p class="small text-muted">
             Die lezten erfassten Kommentare werden oberhalb im Slider angezeigt.
             Bitte beachte, dass nur ein Eintrag pro Tag erfasst werden kann. 
@@ -347,26 +372,25 @@
   
           <form action="/comment" method="POST">
               <div class="row">
-                  <!-- LINKE SPALTE -->
                   <div class="col">
-                      <div class="form-group">
-                          <label for="name">Name:</label>
-                          <input type="text" id="name" name="name" class="form-control" placeholder="* please enter your name">
-                      </div>
-                      <div class="form-group">
-                          <label for="email">E-Mail:</label>
-                          <input type="email" id="email" name="email" class="form-control" placeholder="* please enter your email address">
-                      </div>
-                      <div class="form-group">
-                          <label for="textarea">Was willst Du mir sagen?</label>
-                          <textarea name="comment" class="form-control" id="textarea" rows="4"></textarea>
-                      </div>
-                      <div class="form-group">
-                          <input class="btn btn-success" type="submit" name="commit" value="Place comment">
-                          <input type="hidden" name="_csrf" value="<%= csrfToken %>">  <!-- CSRF TOKEN -->
-                      </div>
-                  </div> <!--end col-->
-            </div> <!--end row-->
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="* please enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail:</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="* please enter your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="textarea">Was willst Du mir sagen?</label>
+                        <textarea name="comment" class="form-control" id="textarea" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-outline-dark btn-round btn-light" type="submit" name="commit" value="Kommentar absenden">
+                        <input type="hidden" width="100%" name="_csrf" value="<%= csrfToken %>">  <!-- CSRF TOKEN -->
+                    </div>
+                </div> 
+            </div>
         </form> <!--end input form-->
   
     </div> <!-- CONTAINER END -->

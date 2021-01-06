@@ -273,28 +273,26 @@ button .navbar-toggler {
 
 
 /*========================= NEWS =============================*/
-// #news_section{
-//     position: relative;
-//     margin-top: 5rem;
-// }
-
-.news-bg{
-    background: url('/img/section_news/silvester_2021_terrasse.jpg') 60% 10rem fixed no-repeat;
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    // margin-top: 5rem;
+#news_section{
+    padding-bottom: 3rem;
 }
 
-#news{
-    position: relative;
-    z-index: 9999;
+.articleLine{
+    border: 2px solid #bd45a3;
 }
 
 .news-images{
     position: relative;
     max-width: 100%;
 
+}
+
+
+/*========================= NEWS posten =============================*/
+#post_newsArticle{
+    position: relative;
+    width: 100%;
+    background-color: rgba(240,240,240,0.6);
 }
 
 

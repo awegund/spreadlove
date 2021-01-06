@@ -10,8 +10,14 @@ let session       = require('express-session');
 let redis         = require('redis');
 /*---------------------------------------------------------------------*/
 let sequelize        = require('./models/establishPostgreConnection');
+// sequelize.sync({ force: true });
 /*---------------------------------------------------------------------*/
-let csrf             = require('csurf');    //Cross Site Request Forgeing Protection
+// Multer must be added before CSURF in MW
+const multer            = require('multer');
+const storage           = multer.memoryStorage();
+const upload            = multer({ storage: storage });
+/*---------------------------------------------------------------------*/
+const csrf           = require('csurf');    //Cross Site Request Forgeing Protection
 const csrfProtection = csrf();
 const helmet         = require('helmet');
 const logger         = require('morgan');
@@ -19,14 +25,13 @@ const logger         = require('morgan');
 const passport       = require('passport');
 const GitHubStrategy = require('passport-github').Strategy;
 const FaceBookStrategy = require('passport-facebook');
-const instagramStrategy = require('passport-instagram').Strategy;
 /*---------------------------------------------------------------------*/
 const flash          = require('connect-flash');   //Info-Error-Warning Handling via Session
 /*---------------------------------------------------------------------*/
 const requestIp      = require('request-ip');
 /*---------------------------------------------------------------------*/
-let publicRoutes     = require('./routes/indexRoutes');
-let errorController  = require('./controller/errorController');
+const publicRoutes     = require('./routes/indexRoutes');
+const errorController  = require('./controller/errorController');
 /*---------------------------------------------------------------------*/
 
 
@@ -59,21 +64,32 @@ app.use(logger('dev'));
 app.use(helmet());
 // Parser
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
 // REDIS Session Store
 app.use(session({
     name:              'SpreadLove.ONE',
     secret:            'Spr3adL0veS3ss10nSt0re',
     resave:             false,
     saveUninitialized:  true,
-    // cookie: {
+        // cookie: {
         //     maxAge: 3600
         // },
         store:         RedisStore
     }));
+
+// FavIcon
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// Remote IP-Address
+app.use(requestIp.mw());
+// Multer MW MUST added BEFORE CSURF
+
+app.use(upload.single('newsPic'));
+// CSRF Protection (AFTER Session!)
+app.use(csrfProtection);       // for all POST-Requests a CSRF-Token MUST be existing!
+
 // Passport Authentication
 app.use(passport.initialize());
 app.use(passport.session());
@@ -83,7 +99,8 @@ passport.use(new GitHubStrategy({
         callbackURL:  process.env.OAUTH_CB_URL+'-github'
     },
     function(accessToken, refreshToken, profile, cb) {
-        // console.log(profile);
+        console.log('===== GitHub PROFILE =======================');
+        console.log(profile);
         return cb(null, profile);
     }
 ));
@@ -104,14 +121,6 @@ passport.serializeUser((user, cb) => {
 passport.deserializeUser((user, cb) => {
         cb(null, user);
 });
-// FavIcon
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
-// Remote IP-Address
-app.use(requestIp.mw());
-
-// CSRF Protection (AFTER Session!)
-app.use(csrfProtection);       // for all POST-Requests a CSRF-Token MUST be existing!
 // FLASH: Cross-Site Info/Warning/Error (AFTER Session!)
 app.use(flash());
 
@@ -130,8 +139,12 @@ app.use(flash());
         res.locals.isLoggedIn = false;
         console.log(`Login: Anmeldung fehlgeschlagen!`);
     }
-    res.locals.csrfToken  = req.csrfToken();
-    next();
+    
+    // CSRF-Token setzen
+    console.log('=============TOKEN===============================================');
+    res.locals.csrfToken = req.csrfToken();
+    console.log(res.locals.csrfToken);
+   next();
 });
 
 // Session --> save remote IP Address 
